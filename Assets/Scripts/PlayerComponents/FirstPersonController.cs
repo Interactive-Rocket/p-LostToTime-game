@@ -222,6 +222,7 @@ public class FirstPersonController : MonoBehaviour
 	{
 		if (Grounded)
 		{
+			Debug.Log("-------------------- Jump!");
 			// reset the fall timeout timer
 			_fallTimeoutDelta = FallTimeout;
 
