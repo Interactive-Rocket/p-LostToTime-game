@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HUDManager))]
 public class HUDInteractionPrompt : MonoBehaviour
 {
     [SerializeField] private GameObject interactionPrompt;
@@ -14,18 +13,11 @@ public class HUDInteractionPrompt : MonoBehaviour
         }
     }
 
-    void Update()
+    public void OnInteractPrompt()
     {
-        if (interactionPrompt != null && PlayerInteract.Instance != null)
+        if (interactionPrompt != null && HUDManager.Instance != null)
         {
-            if (PlayerInteract.Instance.InteractionPromptActive)
-            {
-                interactionPrompt.SetActive(true);
-            }
-            else
-            {
-                interactionPrompt.SetActive(false);
-            }
+            interactionPrompt.SetActive(HUDManager.Instance.InteractionPrompt);
         }
     }
 }

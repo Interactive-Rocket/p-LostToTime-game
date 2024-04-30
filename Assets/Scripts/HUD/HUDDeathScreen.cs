@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HUDManager))]
 public class HUDDeathScreen : MonoBehaviour
 {
     [SerializeField] private GameObject deathScreen;
@@ -14,14 +13,11 @@ public class HUDDeathScreen : MonoBehaviour
         }
     }
 
-    void Update()
+    public void OnPlayerDeathScreen()
     {
-        if (deathScreen != null && PlayerManager.Instance != null)
+        if (deathScreen != null && HUDManager.Instance != null)
         {
-            if (!PlayerManager.Instance.isAlive)
-            {
-                deathScreen.SetActive(true);
-            }
+            deathScreen.SetActive(HUDManager.Instance.PlayerDeathScreen);
         }
     }
 }

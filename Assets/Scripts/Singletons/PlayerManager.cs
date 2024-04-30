@@ -10,12 +10,12 @@ public class PlayerManager : MonoBehaviour
     public GameObject PlayerGameObject { get; private set; }
 
     [Header("Spawning")]
-    [Tooltip("Player prefab. Currently does nothing.")]
-    [SerializeField]
-    private GameObject playerPrefab;
-    [Tooltip("Game object where the player is instantiated. Currently does nothing.")]
-    [SerializeField]
-    private GameObject spawnPoint;
+    [Tooltip("Player prefab. Spawns the player at the spawnPoint.")]
+    [SerializeField] private GameObject playerPrefab;
+    [Tooltip("HUD prefab. Instantiated at scene load.")]
+    [SerializeField] private GameObject HUDPrefab;
+    [Tooltip("Game object where the player is instantiated.")]
+    [SerializeField] private GameObject spawnPoint;
 
     [Header("Setable fields and states")]
     public bool isAlive = true;
@@ -45,9 +45,21 @@ public class PlayerManager : MonoBehaviour
         {
             PlayerGameObject = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
+
+        if (HUDPrefab == null) {
+            Debug.LogError("No HUD Prefab selected.");
+        }
+        else {
+            Instantiate(HUDPrefab);
+        }
     }
 
-    void Update() {
-        if (!isAlive) controlEnabled = false;
+    void Update()
+    {
+        if (!isAlive)
+        {
+            if (HUDManager.Instance != null) HUDManager.Instance.PlayerDeathScreen = true;
+            controlEnabled = false;
+        }
     }
 }

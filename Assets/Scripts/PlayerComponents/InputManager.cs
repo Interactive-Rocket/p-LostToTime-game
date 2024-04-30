@@ -226,14 +226,4 @@ public class InputManager : MonoBehaviour
 	{
 		if (PlayerManager.Instance != null) canControl = PlayerManager.Instance.controlEnabled;
 	}
-
-	void LateUpdate()
-	{
-		if (reloadScene && SceneManagerSingleton.Instance != null)
-		{
-			Debug.Log("got here");
-			reloadScene = false;
-			SceneManagerSingleton.Instance.ReloadScene();
-		}
-	}
 }

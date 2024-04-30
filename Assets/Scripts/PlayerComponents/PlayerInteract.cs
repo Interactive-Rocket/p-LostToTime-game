@@ -5,29 +5,26 @@ public interface IInteractable
     public void Interact();
 }
 
+[RequireComponent(typeof(InputManager))]
 public class PlayerInteract : MonoBehaviour
 {
-    public static PlayerInteract Instance { get; private set; }
     public float InteractionRange = 10f;
     private IInteractable focusedInteractable = null;
-    public bool InteractionPromptActive { get; private set; } = false;
+    private InputManager _input;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Debug.LogError("Only one interact manager may exist at once!");
-            return;
-        }
+        _input = GetComponent<InputManager>();
     }
 
     private void Update()
     {
         CheckForInteractable();
+
+        if (_input.IsInteracting())
+        {
+            SendInteract();
+        }
     }
 
     private void CheckForInteractable()
@@ -39,12 +36,12 @@ public class PlayerInteract : MonoBehaviour
         if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IInteractable tempInteractable))
         {
             focusedInteractable = tempInteractable;
-            InteractionPromptActive = true;
+            if (HUDManager.Instance != null) HUDManager.Instance.InteractionPrompt = true;
         }
         else
         {
             focusedInteractable = null;
-            InteractionPromptActive = false;
+            if (HUDManager.Instance != null) HUDManager.Instance.InteractionPrompt = false;
         }
     }
 
