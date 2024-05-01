@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 7473494211092602583}
   - component: {fileID: 1722697283058079983}
   - component: {fileID: 2394504762442693712}
+  - component: {fileID: 3435728880475952625}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -819,6 +820,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d90735fd-1042-470c-9093-53edc15c261b
     m_ActionName: Player/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5918536525241146029}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5ee036ce-9927-4750-8edd-4e7e0aadde56
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -847,6 +864,7 @@ MonoBehaviour:
   interact: 0
   grab: 0
   reloadScene: 0
+  pause: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -1143,5 +1161,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f31fc4042ce6384f9fe2d407bc648f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3435728880475952625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965885535006394065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9acd32daf9ea584cb06f3b57229e94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

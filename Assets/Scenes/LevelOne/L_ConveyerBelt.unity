@@ -3851,6 +3851,8 @@ MonoBehaviour:
     type: 3}
   HUDPrefab: {fileID: 1692916813957765883, guid: 5d966ed67409f05409fa0c6f315671f6,
     type: 3}
+  PauseMenuPrefab: {fileID: 4050247176514625685, guid: 7c11aa1e7062be74c8f5320e53d06bcb,
+    type: 3}
   spawnPoint: {fileID: 1677701967}
   isAlive: 1
   controlEnabled: 1

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMainMenuManager : MonoBehaviour
-{
+public class UIMainMenuManager : UIMenuManager
+{ 
     public static UIMainMenuManager Instance { get; private set; }
     [Tooltip("Path to the first level, must be specified in build settings as well.")]
     [SerializeField] private string firstLevel;
@@ -12,12 +12,18 @@ public class UIMainMenuManager : MonoBehaviour
     [SerializeField] private GameObject InstructionsCanvas;
     [SerializeField] private GameObject CreditsCanvas;
 
-    private GameObject currentMenuState;
-    private List<GameObject> menuStates;
-
-    void Awake()
+    override protected void SetMenuStates()
     {
-        // Ensure it's a singleton
+        menuStates = new List<GameObject>
+        {
+            MainCanvas,
+            InstructionsCanvas,
+            CreditsCanvas
+        };
+    }
+    
+    protected override void AssignSelfSingleton()
+    {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -26,18 +32,9 @@ public class UIMainMenuManager : MonoBehaviour
         {
             Instance = this;
         }
-
-        menuStates = new List<GameObject>
-        {
-            MainCanvas,
-            InstructionsCanvas,
-            CreditsCanvas
-        };
-
-        SetMainCanvasActive();
     }
 
-    public void SetMainCanvasActive()
+    override public void SetMainCanvasActive()
     {
         ChangeMenuState(MainCanvas);
     }
@@ -52,20 +49,10 @@ public class UIMainMenuManager : MonoBehaviour
         ChangeMenuState(CreditsCanvas);
     }
 
-    private void ChangeMenuState(GameObject newState)
-    {
-        if (newState == null) return;
-        currentMenuState = newState;
-
-        foreach (var state in menuStates)
-        {
-            if (state != null) state.SetActive(state == newState);
-        }
-    }
-
     public void StartGame()
     {
-        if (SceneManagerSingleton.Instance != null) {
+        if (SceneManagerSingleton.Instance != null)
+        {
             Cursor.lockState = CursorLockMode.Locked;
             SceneManagerSingleton.Instance.LoadScene(firstLevel);
         }
@@ -74,10 +61,10 @@ public class UIMainMenuManager : MonoBehaviour
     public void KillGame()
     {
         #if UNITY_STANDALONE
-                Application.Quit();
+            Application.Quit();
         #endif
         #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
 }
