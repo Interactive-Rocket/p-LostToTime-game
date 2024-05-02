@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [Tooltip("HUD prefab. Instantiated at scene load.")]
     [SerializeField] private GameObject HUDPrefab;
+    [Tooltip("Pause menu prefab. Instantiated at scene load.")]
+    [SerializeField] private GameObject PauseMenuPrefab;
     [Tooltip("Game object where the player is instantiated.")]
     [SerializeField] private GameObject spawnPoint;
 
@@ -46,11 +48,22 @@ public class PlayerManager : MonoBehaviour
             PlayerGameObject = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
 
-        if (HUDPrefab == null) {
+        if (HUDPrefab == null)
+        {
             Debug.LogError("No HUD Prefab selected.");
         }
-        else {
+        else
+        {
             Instantiate(HUDPrefab);
+        }
+
+        if (PauseMenuPrefab == null)
+        {
+            Debug.LogError("No pause menu prefab selected.");
+        }
+        else
+        {
+            Instantiate(PauseMenuPrefab);
         }
     }
 

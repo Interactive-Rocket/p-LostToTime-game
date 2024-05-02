@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
 	private bool grab;
 	[SerializeField]
 	private bool reloadScene = false;
+	[SerializeField]
+	private bool pause = false;
 
 	[SerializeField]
 	private bool deselect;
@@ -118,6 +120,12 @@ public class InputManager : MonoBehaviour
 		ReloadSceneInput(value.action.triggered);
 	}
 
+	public void OnPause(InputAction.CallbackContext value)
+	{
+		// Always allow opening the menu even if we can't control
+		PauseInput(value.action.triggered);
+	}
+
 	// Getters
 	public Vector2 GetMove()
 	{
@@ -175,6 +183,10 @@ public class InputManager : MonoBehaviour
 	{
 		return reloadScene;
 	}
+	public bool IsPausing()
+	{
+		return pause;
+	}
 
 	public bool GetAnalogMovement()
 	{
@@ -229,6 +241,11 @@ public class InputManager : MonoBehaviour
 	public void ReloadSceneInput(bool newSceneReloadState)
 	{
 		reloadScene = newSceneReloadState;
+	}
+
+	public void PauseInput(bool newPauseState)
+	{
+		pause = newPauseState;
 	}
 
 	private void OnApplicationFocus(bool hasFocus)

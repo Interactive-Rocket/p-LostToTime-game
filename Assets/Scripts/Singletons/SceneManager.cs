@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class SceneManagerSingleton : MonoBehaviour
 {
     public static SceneManagerSingleton Instance { get; private set; }
+    public enum TimeState { Running, Paused }
+    public TimeState CurrentTimeState { get; private set; } = TimeState.Running;
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -18,6 +20,16 @@ public class SceneManagerSingleton : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void LoadScene(string sceneName)
@@ -46,5 +58,42 @@ public class SceneManagerSingleton : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Time.timeScale = 1.0f;
+    }
+
+    public void PauseGame()
+    {
+        ChangeTimeState(TimeState.Paused);
+    }
+
+    public void UnpauseGame()
+    {
+        ChangeTimeState(TimeState.Running);
+    }
+
+    private void ChangeTimeState(TimeState newTimeState)
+    {
+        if (newTimeState == CurrentTimeState) return;
+
+        switch (newTimeState)
+        {
+            case TimeState.Paused:
+                Time.timeScale = 0;
+                if (PlayerManager.Instance != null) PlayerManager.Instance.controlEnabled = false;
+                Cursor.lockState = CursorLockMode.None;
+                break;
+            default:
+                Time.timeScale = 1.0f;
+                if (PlayerManager.Instance != null) PlayerManager.Instance.controlEnabled = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                break;
+        }
+
+        CurrentTimeState = newTimeState;
     }
 }
