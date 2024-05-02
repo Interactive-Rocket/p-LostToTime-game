@@ -15,6 +15,7 @@ public class RewindManager : MonoBehaviour {
 
     private GameObject currentFocusObject;
     public GameObject particleSystemPrefab;
+    private int currentlyFocusedObj;
     private bool isRewinding;
 
     private enum EntityState {
@@ -50,7 +51,28 @@ public class RewindManager : MonoBehaviour {
             if(timeEntity != null) {
                 // SetupFocus(hitObject);
                 Debug.Log("Focusing on " + hitObject.name);
-                // SetupFocus(hitObject);
+                if(!selectedObjects.Contains(hitObject) && hitObject != currentFocusObject) {
+                    if(currentFocusObject != null) {
+                        if(selectedObjects.Contains(currentFocusObject)) {
+                            UpdateVisuals(currentFocusObject, EntityState.Selected);
+                        } else {
+                            Debug.Log("Deselecting " + currentFocusObject.name);
+                            ResetVisuals(currentFocusObject);
+                        }
+                    }
+                    UpdateVisuals(hitObject, EntityState.Focused);
+                    currentFocusObject = hitObject;
+                }
+            } else {
+                if(currentFocusObject != null) {
+                    if(selectedObjects.Contains(currentFocusObject)) {
+                        UpdateVisuals(currentFocusObject, EntityState.Selected);
+                    } else {
+                        Debug.Log("Deselecting " + currentFocusObject.name);
+                        ResetVisuals(currentFocusObject);
+                    }
+                    currentFocusObject = null;
+                }
             }
     }
 
@@ -61,8 +83,6 @@ public class RewindManager : MonoBehaviour {
             Debug.Log("All selected objects: " + selectedObjects.Count);
             UpdateVisuals(obj, EntityState.Selected);
         } else {
-            // DeselectObject(obj);
-            // Debug.Log("Deselected " + obj.name);
         }
     }
 

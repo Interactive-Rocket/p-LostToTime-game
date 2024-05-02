@@ -30,6 +30,9 @@ public class InputManager : MonoBehaviour
 	[SerializeField]
 	private bool reloadScene = false;
 
+	[SerializeField]
+	private bool deselect;
+
 	[Header("Movement Settings")]
 	[SerializeField]
 	private bool analogMovement;
@@ -104,6 +107,11 @@ public class InputManager : MonoBehaviour
 		GrabInput(canControl && value.action.triggered);
 	}
 
+	public void OnDeselect(InputAction.CallbackContext value)
+	{
+		DeselectInput(canControl && value.action.triggered);
+	}
+
 	public void OnReloadScene(InputAction.CallbackContext value)
 	{
 		// Always reload scene even if we can't control
@@ -157,6 +165,12 @@ public class InputManager : MonoBehaviour
 	{
 		return grab;
 	}
+
+	public bool IsDeselecting()
+	{
+		return deselect;
+	}
+
 	public bool IsReloadingScene()
 	{
 		return reloadScene;
@@ -205,6 +219,11 @@ public class InputManager : MonoBehaviour
 	public void GrabInput(bool newGrabState)
 	{
 		grab = newGrabState;
+	}
+
+	public void DeselectInput(bool newDeselectState)
+	{
+		deselect = newDeselectState;
 	}
 
 	public void ReloadSceneInput(bool newSceneReloadState)
