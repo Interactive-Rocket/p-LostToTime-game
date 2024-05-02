@@ -524,11 +524,10 @@ GameObject:
   - component: {fileID: 193984657107912417}
   - component: {fileID: 9143477954622353737}
   - component: {fileID: 8068859592868853902}
-  - component: {fileID: 2270982947372230200}
-  - component: {fileID: 7473494211092602583}
   - component: {fileID: 1722697283058079983}
   - component: {fileID: 2394504762442693712}
-  - component: {fileID: 3435728880475952625}
+  - component: {fileID: 7623405112181089285}
+  - component: {fileID: 1966011200618909534}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -824,7 +823,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5918536525241146029}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnPause
+        m_MethodName: OnDeselect
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -834,8 +833,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 5ee036ce-9927-4750-8edd-4e7e0aadde56
-    m_ActionName: Player/Pause[/Keyboard/escape]
+    m_ActionId: 7b631c30-8d74-4287-afbf-42c0725b00ca
+    m_ActionName: Player/DeselectAll[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -864,7 +863,7 @@ MonoBehaviour:
   interact: 0
   grab: 0
   reloadScene: 0
-  pause: 0
+  deselect: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -1104,38 +1103,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2270982947372230200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965885535006394065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d9368e35aff405681cc4fe6f8bf196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineMaterial: {fileID: 2100000, guid: d083030375c86114799abce2937e62df, type: 2}
-  lengthOfLineRenderer: 20
---- !u!114 &7473494211092602583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965885535006394065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8164326a03008490eaa596b7d97429ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  focusParticleSystemPrefab: {fileID: 3977460484853769091, guid: 986f62a8c2266c04da5d9221aa5a1662,
-    type: 3}
-  focusColor: {r: 0.6392157, g: 0, b: 1, a: 0}
-  rewindColor: {r: 1, g: 0, b: 0, a: 0}
-  particleMaterial: {fileID: 2100000, guid: c096891a19b512e89b6043304c5ed279, type: 2}
-  timeVision: 0
 --- !u!114 &1722697283058079983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,7 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f31fc4042ce6384f9fe2d407bc648f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3435728880475952625
+--- !u!114 &7623405112181089285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1172,6 +1139,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7965885535006394065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9acd32daf9ea584cb06f3b57229e94c, type: 3}
+  m_Script: {fileID: 11500000, guid: 92d9dc165f3dd0148baedff2044e86b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractionRange: 10
+--- !u!114 &1966011200618909534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965885535006394065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d9dc165f3dd0148baedff2044e86b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionRange: 10
