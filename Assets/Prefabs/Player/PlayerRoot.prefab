@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 1722697283058079983}
   - component: {fileID: 2394504762442693712}
   - component: {fileID: 7623405112181089285}
-  - component: {fileID: 1966011200618909534}
+  - component: {fileID: 5696852910367605828}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -835,6 +835,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7b631c30-8d74-4287-afbf-42c0725b00ca
     m_ActionName: Player/DeselectAll[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5918536525241146029}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6f4a3835-a462-4228-91ea-8ccf17c974ac
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -863,6 +879,7 @@ MonoBehaviour:
   interact: 0
   grab: 0
   reloadScene: 0
+  pause: 0
   deselect: 0
   analogMovement: 0
   cursorLocked: 1
@@ -1143,7 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionRange: 10
---- !u!114 &1966011200618909534
+--- !u!114 &5696852910367605828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1152,7 +1169,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7965885535006394065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d9dc165f3dd0148baedff2044e86b7, type: 3}
+  m_Script: {fileID: 11500000, guid: b9acd32daf9ea584cb06f3b57229e94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionRange: 10

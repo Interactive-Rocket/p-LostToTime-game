@@ -87,6 +87,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "6f4a3835-a462-4228-91ea-8ccf17c974ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "DeselectAll",
                     "type": "Button",
                     "id": "7b631c30-8d74-4287-afbf-42c0725b00ca",
@@ -336,6 +345,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "DeselectAll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2fda341a-5b56-449a-abfc-7f14df2d118a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
