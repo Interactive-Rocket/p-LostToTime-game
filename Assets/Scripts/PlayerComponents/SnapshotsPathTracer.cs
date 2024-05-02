@@ -22,6 +22,11 @@ public class SnapshotsPathTracer : MonoBehaviour
 
     }
 
+    public void RemoveSelf() {
+        Destroy(lineRenderer);
+        Destroy(this);
+    }
+
     public void ChangeMaterial(Material newMaterial) {
         Debug.Log("asdf Attempting to change material to " + newMaterial.name);
         if (lineRenderer != null) {

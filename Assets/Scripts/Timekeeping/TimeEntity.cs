@@ -218,4 +218,9 @@ public class TimeEntity : MonoBehaviour, ITargetable
         return snapshots;
     }
 
+    public bool HasSnapshots()
+    {
+        return snapshots.Count > 0;
+    }
+
 }

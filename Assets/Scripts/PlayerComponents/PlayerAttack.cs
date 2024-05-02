@@ -54,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
 		{
 			_attackTimeoutDelta = AttackTimeout;
 			RewindManager.Instance.RewindObjects(true);
+			// RewindManager.Instance.DeselectAll();
 		}
 
 		if (_input.IsAttackingTwo())

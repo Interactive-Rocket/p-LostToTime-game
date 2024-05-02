@@ -20,7 +20,8 @@ public class RewindManager : MonoBehaviour {
     private enum EntityState {
         Focused,
         Selected,
-        Rewinding
+        Rewinding,
+        Deselected
     }
 
     void Awake() {
@@ -65,29 +66,46 @@ public class RewindManager : MonoBehaviour {
         }
     }
 
-    public void DeselectObject(GameObject obj) {
-        if (selectedObjects.Contains(obj)) {
-            selectedObjects.Remove(obj);
+    public void DeselectAll() {
+        for (int i = selectedObjects.Count - 1; i >= 0; i--) {
+            GameObject obj = selectedObjects[i];
+            TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+            if (timeEntity != null) {
+                timeEntity.Rewind(false);
+                ResetVisuals(obj);
+            }
+            selectedObjects.RemoveAt(i);
         }
     }
 
-    public void ClearSelection() {
-        selectedObjects.Clear();
+    public void DeselectObject(GameObject obj) {
+        if (selectedObjects.Contains(obj)) { 
+            selectedObjects.Remove(obj);
+            ResetVisuals(obj);
+        }
     }
+
 
     public void RewindObjects(bool rewind) {
         isRewinding = rewind;
-        foreach (GameObject obj in selectedObjects) {
+
+        for (int i = selectedObjects.Count - 1; i >= 0; i--) {
+            GameObject obj = selectedObjects[i];
             TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
             if (timeEntity != null) {
-               if (timeEntity.Rewind(rewind)) {
+                if (timeEntity.Rewind(rewind)) {
                     UpdateVisuals(obj, EntityState.Rewinding);
                 } else {
-                    UpdateVisuals(obj, EntityState.Selected);
+                    if(timeEntity.HasSnapshots()) {
+                        UpdateVisuals(obj, EntityState.Selected);
+                    } else {
+                        DeselectObject(obj);
+                    }
                 }
             }
         }
     }
+
 
     public void UpdateSelectedObjectPaths() {
         foreach (GameObject obj in selectedObjects) {
@@ -103,6 +121,19 @@ public class RewindManager : MonoBehaviour {
     private void UpdateVisuals(GameObject obj, EntityState state) {
         UpdateParticleSystem(obj, state);
         UpdatePath(obj, state);
+    }
+
+    private void ResetVisuals(GameObject obj) {
+
+        // Removes the particle system and path tracer from the object
+        ParticleSystem ps = obj.GetComponentInChildren<ParticleSystem>();
+        if (ps != null) {
+            Destroy(ps);
+        }
+        SnapshotsPathTracer path = obj.GetComponent<SnapshotsPathTracer>();
+        if (path != null) {
+            path.RemoveSelf();
+        }
     }
 
     private void UpdatePath(GameObject obj, EntityState state) {
