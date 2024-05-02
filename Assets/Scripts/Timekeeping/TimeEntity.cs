@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TimeEntity : MonoBehaviour
+public interface ITargetable {}
+
+
+public class TimeEntity : MonoBehaviour, ITargetable
 {
     public event Action<bool> OnRewindStatusChanged;
     [Tooltip("How long we record time for, in seconds")]
@@ -26,7 +29,6 @@ public class TimeEntity : MonoBehaviour
                 {
                     _isRewinding = value;
                     Debug.Log($"IsRewinding changed: {_isRewinding}");
-                    OnRewindingChanged?.Invoke(_isRewinding);
                 }
             }
 
@@ -126,10 +128,11 @@ public class TimeEntity : MonoBehaviour
     }
 
     // In case we want to locally rewind
-    public void Rewind(bool rewind)
+    public bool Rewind(bool rewind)
     {
         Debug.Log("Rewinding object from TargetedTimeEntity");
-        IsRewinding = rewind;
+        IsRewinding = snapshots.Count > 0 ? rewind : false;
+        return IsRewinding;
     }
 
     // In case we want to locally stop time

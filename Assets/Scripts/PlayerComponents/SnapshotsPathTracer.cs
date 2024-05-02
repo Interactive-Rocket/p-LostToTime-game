@@ -12,38 +12,39 @@ public class SnapshotsPathTracer : MonoBehaviour
     // Creates a line renderer that follows a Sin() function
     // and animates it.
 
-    public Material lineMaterial;
     public int lengthOfLineRenderer = 20;
     private bool _isPathVisible = false;
 
     LineRenderer lineRenderer;
 
-    void Start()
-    {
-        setUpLineRenderer(lineRenderer);
-    }
     void Update()
     {
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.material = lineMaterial;
-
-        ViewPath(lineRenderer);
-        // PreviewPath(lineRenderer);
 
     }
 
-    public void ChangeColor(Color newColor) {
-        lineMaterial.SetColor("_Color", newColor);
+    public void ChangeMaterial(Material newMaterial) {
+        Debug.Log("asdf Attempting to change material to " + newMaterial.name);
+        if (lineRenderer != null) {
+            lineRenderer.material = newMaterial;
+            Debug.Log("asdf Material changed successfully to " + newMaterial.name);
+        } else {
+            Debug.Log("asdf lineRenderer is not initialized");
+        }
     }
 
-    private void setUpLineRenderer(LineRenderer lineRenderer)
+
+    public LineRenderer SetUpLineRenderer(LinkedList<TimeSnapshot> snapshots)
     {
+        Debug.Log("Setting up line renderer with snapshots: " + snapshots.Count);
         lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.widthMultiplier = 0.2f;
+        SetEntitySnapshots(snapshots);
+        SetPathVisibility(true);
+        ViewPath();
+        return lineRenderer;
     }
 
-    public void ViewPath(LineRenderer lineRenderer)
+    public void ViewPath()
     {
 
         if (snapshots != null && _isPathVisible)
@@ -74,5 +75,6 @@ public class SnapshotsPathTracer : MonoBehaviour
     public void SetEntitySnapshots(LinkedList<TimeSnapshot> targetedSnapshots)
     {
         snapshots = targetedSnapshots;
+        ViewPath();
     }
 }

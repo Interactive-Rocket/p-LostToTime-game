@@ -19,7 +19,6 @@ public class PlayerAttack : MonoBehaviour
 	private GameObject _mainCamera;
 	private PlayerSound _playerSound;
 	//private GrabManager _grabManager;
-	private TimeEntity currentRewindingEntity;
 
 	private void Awake()
 	{
@@ -47,64 +46,36 @@ public class PlayerAttack : MonoBehaviour
 
 	private void Attacking()
 	{
-		if (!_input.IsAttackingOne() && currentRewindingEntity != null)
+		if (!_input.IsAttackingOne())
 		{
-			currentRewindingEntity.Rewind(false);
-			currentRewindingEntity = null;
-		}
-
-		else if (_input.IsAttackingOne() && currentRewindingEntity != null)
+			RewindManager.Instance.RewindObjects(false);
+		} 
+		else if (_input.IsAttackingOne()) 
 		{
-			currentRewindingEntity.Rewind(true);
-		}
-
-		else if (_input.IsAttackingOne())
-		{
-			//Debug.Log("Do Attack One!");
-			// reset the attack timeout timer
 			_attackTimeoutDelta = AttackTimeout;
-			Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0); //The ray is shoot from the center of the screen
-			_rayTimeEntitySelector = Camera.main.ScreenPointToRay(screenCenterPoint);
-			Debug.DrawRay(_rayTimeEntitySelector.origin, _rayTimeEntitySelector.direction * 10, Color.yellow);
-
-			if (Physics.Raycast(_rayTimeEntitySelector, out RaycastHit hit))
-			{
-				GameObject hitObject = hit.collider.gameObject;
-				//Debug.Log(hitObject.name);
-				TimeEntity timeEntity = hitObject.GetComponentInParent<TimeEntity>();
-
-				// Change to be more safe in case the hit object does not have a TimeEntity component
-				if (timeEntity != null)
-				{
-					currentRewindingEntity = timeEntity;
-					var snapshots = timeEntity.GetSnapshots();
-					if (snapshots != null) //if has recorded data, draw previous positions
-					{
-						_playerSound.PlayAbilitySound();
-						//entitySnapshotPathTracer.SetEntitySnapshots(snapshots);
-					}
-
-					timeEntity.Rewind(true);
-					// Do we want this to also work for the old not TimeEntity?
-					// These really shouldn't be separate classes.
-				}
-				else
-				{
-
-					//Debug.Log("No TimeEntity component found.");
-				}
-			}
-
-			else
-			{
-				//Debug.Log("Not hit");
-			}
-
+			RewindManager.Instance.RewindObjects(true);
 		}
 
 		if (_input.IsAttackingTwo())
 		{
-			//Debug.Log("Do Attack Two!");
+
+			Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0); //The ray is shoot from the center of the screen
+			_rayTimeEntitySelector = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+			if (Physics.Raycast(_rayTimeEntitySelector, out RaycastHit hit)) {
+                GameObject hitObject = hit.collider.gameObject;
+				Debug.Log(hitObject.name);
+				TimeEntity timeEntity = hitObject.GetComponentInParent<TimeEntity>();
+                if (timeEntity != null) {
+                    // RewindManager.Instance.SelectObject(hit.collider.gameObject);
+					if (RewindManager.Instance != null) {
+						RewindManager.Instance.SelectObject(hit.collider.gameObject);
+					} else {
+						Debug.LogError("RewindManager.Instance is null");
+					}
+
+                }
+            }
 		}
 		else
 		{

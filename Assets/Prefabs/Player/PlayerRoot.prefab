@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7965885535006394065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8164326a03008490eaa596b7d97429ef, type: 3}
   m_Name: 
@@ -1116,7 +1116,9 @@ MonoBehaviour:
     type: 3}
   focusColor: {r: 0.6392157, g: 0, b: 1, a: 0}
   rewindColor: {r: 1, g: 0, b: 0, a: 0}
-  particleMaterial: {fileID: 2100000, guid: c096891a19b512e89b6043304c5ed279, type: 2}
+  particleMaterialFocused: {fileID: 0}
+  particleMaterialSelected: {fileID: 0}
+  particleMaterialRewinding: {fileID: 0}
   timeVision: 0
 --- !u!114 &1722697283058079983
 MonoBehaviour:
