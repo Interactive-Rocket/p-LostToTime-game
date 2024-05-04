@@ -78,6 +78,7 @@ public class UIPauseMenuManager : UIMenuManager
     public void MenuVisibility(bool visible)
     {
         isVisible = visible;
+        SetMainCanvasActive();
         ContainerCanvas.SetActive(visible);
         Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
     }

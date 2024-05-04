@@ -73,6 +73,7 @@ public class SceneManagerSingleton : MonoBehaviour
 
     public void UnpauseGame()
     {
+        PlayerPrefs.Save();
         ChangeTimeState(TimeState.Running);
     }
 

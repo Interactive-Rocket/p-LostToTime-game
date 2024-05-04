@@ -12,7 +12,7 @@ public class PlayerSound : MonoBehaviour
     private bool abilityActive;
     private float loopSustain = 0.1f;
     private float lastInput;
-    // Start is called before the first frame update
+
     void Start()
     {
         audioSourceAbility = GetComponents<AudioSource>()[0];
@@ -23,17 +23,18 @@ public class PlayerSound : MonoBehaviour
         audioSourceFootsteps.volume = 0.2f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        lastInput +=Time.deltaTime;
+        if (PlayerManager.Instance != null) AudioListener.volume = PlayerManager.Instance.volume;
+        lastInput += Time.deltaTime;
         if (!audioSourceAbility.isPlaying && lastInput > loopSustain)
             abilityActive = false;
     }
 
     public void PlayAbilitySound()
     {
-        if (!abilityActive && !audioSourceAbility.isPlaying){
+        if (!abilityActive && !audioSourceAbility.isPlaying)
+        {
             audioSourceAbility.clip = abilityStartupSound;
             audioSourceAbility.Play();
             abilityActive = true;
@@ -42,18 +43,20 @@ public class PlayerSound : MonoBehaviour
         {
             audioSourceAbility.clip = abilityLoopSound;
             audioSourceAbility.Play();
-            
         }
+
         lastInput = 0;
     }
 
     public void PlayFootstep(float speed)
     {
-        if (!audioSourceFootsteps.isPlaying){
+        if (!audioSourceFootsteps.isPlaying)
+        {
             audioSourceFootsteps.Play();
         }
         audioSourceFootsteps.pitch = speed;
     }
+
     public void StopFootsteps()
     {
         audioSourceFootsteps.Stop();

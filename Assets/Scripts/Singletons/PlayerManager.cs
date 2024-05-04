@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour
     [Header("Setable fields and states")]
     public bool isAlive = true;
     public bool controlEnabled = true;
+    public float volume = 1.0f;
+    public float sensitivity = 1.0f;
 
     void Awake()
     {
@@ -64,6 +66,17 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Instantiate(PauseMenuPrefab);
+        }
+
+        // Load volume and sensitivity
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+            sensitivity = PlayerPrefs.GetFloat("Sensitivity");
+        }
+
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            volume = PlayerPrefs.GetFloat("Volume");
         }
     }
 
