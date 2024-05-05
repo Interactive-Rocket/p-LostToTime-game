@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOne/L_ConveyerBelt.unity
     guid: 9a1b6169c32fd4025a0fbaebdc935b3e
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo/L_BoxesBridge.unity
+    guid: eb8effbfa3d874d1abb63489eb47020b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5f8b34f22067fa6468b9cc852fbf164e,
       type: 2}
