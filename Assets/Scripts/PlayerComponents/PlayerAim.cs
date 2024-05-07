@@ -56,9 +56,10 @@ public class PlayerAim : MonoBehaviour
 		{
 			//Don't multiply mouse input by Time.deltaTime
 			float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+			float sensitivityMultiplier = (PlayerManager.Instance != null) ? PlayerManager.Instance.sensitivity : 1.0f;
 
-			_cinemachineTargetPitch += _input.GetLook().y * RotationSpeed * deltaTimeMultiplier;
-			_rotationVelocity = _input.GetLook().x * RotationSpeed * deltaTimeMultiplier;
+			_cinemachineTargetPitch += _input.GetLook().y * RotationSpeed * deltaTimeMultiplier * sensitivityMultiplier;
+			_rotationVelocity = _input.GetLook().x * RotationSpeed * deltaTimeMultiplier * sensitivityMultiplier;
 
 			// clamp our pitch rotation
 			_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
