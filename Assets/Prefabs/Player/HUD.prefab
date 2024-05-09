@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 8842946406668899902}
   - component: {fileID: 1205766603821838281}
   - component: {fileID: 5760722641064508830}
+  - component: {fileID: 3356352280047811096}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc066de1c1adb8443890aec74dbe0a75, type: 3}
+  m_Sprite: {fileID: -2097885141, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -177,6 +178,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3356352280047811096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947601644153686610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51507c5539cbfaa429fb102bfa4008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairArray:
+  - {fileID: -2097885141, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  - {fileID: -1318703954, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  - {fileID: 1893726151, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  - {fileID: -843616940, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  - {fileID: 1569888268, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  - {fileID: -1361225250, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  - {fileID: -1513426822, guid: 7d1a052e52e4e204b907c733ab276e87, type: 3}
+  transitionTime: 0.03
 --- !u!1 &972166204794563622
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +446,36 @@ MonoBehaviour:
       - m_Target: {fileID: 5640190486272979829}
         m_TargetAssemblyTypeName: HUDDeathScreen, Assembly-CSharp
         m_MethodName: OnPlayerDeathScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHoveringGrabbable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3356352280047811096}
+        m_TargetAssemblyTypeName: HUDCrosshairAnimator, Assembly-CSharp
+        m_MethodName: CrosshairHovering
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onNotHoveringGrabbable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3356352280047811096}
+        m_TargetAssemblyTypeName: HUDCrosshairAnimator, Assembly-CSharp
+        m_MethodName: CrosshairNotHovering
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

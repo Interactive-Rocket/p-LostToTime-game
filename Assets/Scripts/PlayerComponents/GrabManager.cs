@@ -11,6 +11,23 @@ public class GrabManager : MonoBehaviour
     private float grabOffset;
     private bool isGrabbing = false; // Added to control grab toggle
 
+    void Update()
+    {
+        // Lazy add, should be broken off into a separate method we can call
+        Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, GrabRange))
+        {
+            if (hitInfo.collider.gameObject.TryGetComponent(out Rigidbody _))
+            {
+                if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = true;
+                return;
+            }
+        }
+
+        if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = false;
+    }
+
     public void UpdateGrabStatus(bool isInputActive)
     {
         if (isInputActive && !isGrabbing)
@@ -20,12 +37,12 @@ public class GrabManager : MonoBehaviour
         }
         else if (!isInputActive)
         {
-            isGrabbing = false; 
+            isGrabbing = false;
         }
 
         if (grabbed != null)
         {
-            SendGrab(); 
+            SendGrab();
         }
     }
 
@@ -57,7 +74,8 @@ public class GrabManager : MonoBehaviour
     {
         Vector3 vecToTargetPos = Camera.main.transform.position + Camera.main.transform.forward * grabOffset - grabbed.position;
         Vector3 dampingForce = -grabbed.velocity * GrabDamping;
-        if (Vector3.Angle(grabbed.velocity, vecToTargetPos) > 90f) {
+        if (Vector3.Angle(grabbed.velocity, vecToTargetPos) > 90f)
+        {
             grabbed.velocity = Vector3.zero;
         }
         grabbed.AddForce(vecToTargetPos * Mathf.Pow(vecToTargetPos.magnitude, 2) * GrabStrength + dampingForce);
