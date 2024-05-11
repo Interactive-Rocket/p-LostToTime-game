@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public interface ITargetable {}
+public interface ITargetable { }
 
 
 public class TimeEntity : MonoBehaviour, ITargetable
@@ -22,15 +22,15 @@ public class TimeEntity : MonoBehaviour, ITargetable
     public bool IsRewinding
     {
         get => _isRewinding;
-            set
+        set
+        {
+            Debug.Log($"Attempting to change IsRewinding from {_isRewinding} to {value}");
+            if (_isRewinding != value)
             {
-                Debug.Log($"Attempting to change IsRewinding from {_isRewinding} to {value}");
-                if (_isRewinding != value)
-                {
-                    _isRewinding = value;
-                    Debug.Log($"IsRewinding changed: {_isRewinding}");
-                }
+                _isRewinding = value;
+                Debug.Log($"IsRewinding changed: {_isRewinding}");
             }
+        }
 
     }
 
@@ -45,7 +45,8 @@ public class TimeEntity : MonoBehaviour, ITargetable
         DefaultRBLocalTime,
         DefaultButton,
         DefaultDoor,
-        DefaultConveyor
+        DefaultConveyor,
+        DefaultTurret
     }
 
     // Keep track of different attributes from the various time snapshot structures:
@@ -55,6 +56,7 @@ public class TimeEntity : MonoBehaviour, ITargetable
     private DoorController doorController;
     private SoundController soundController;
     private ConveyorController conveyorController;
+    private TurretController turretController;
 
     void Start()
     {
@@ -79,6 +81,10 @@ public class TimeEntity : MonoBehaviour, ITargetable
                 break;
             case TimePattern.DefaultConveyor:
                 conveyorController = GetComponent<ConveyorController>();
+                soundController = GetComponent<SoundController>();
+                break;
+            case TimePattern.DefaultTurret:
+                turretController = GetComponent<TurretController>();
                 soundController = GetComponent<SoundController>();
                 break;
             default:
@@ -171,7 +177,7 @@ public class TimeEntity : MonoBehaviour, ITargetable
                 soundController.audioClip = timeSnapshotButton.audioClip;
                 break;
             case TimeSnapshotDoor timeSnapshotDoor:
-                doorController.animationProgress = timeSnapshotDoor.animationProgress;
+                doorController.animationProgress = timeSnapshotDoor.AnimationProgress;
                 soundController.playbackTime = timeSnapshotDoor.playbackTime;
                 soundController.audioClip = timeSnapshotDoor.audioClip;
                 break;
@@ -179,6 +185,12 @@ public class TimeEntity : MonoBehaviour, ITargetable
                 conveyorController.pushForce = timeSnapshotConveyor.pushForce;
                 soundController.playbackTime = timeSnapshotConveyor.playbackTime;
                 soundController.audioClip = timeSnapshotConveyor.audioClip;
+                break;
+            case TimeSnapshotTurret timeSnapshotTurret:
+                turretController.aimer.transform.rotation = timeSnapshotTurret.AimerRotation;
+                turretController.currentTargetIndex = timeSnapshotTurret.CurrentTargetIndex;
+                soundController.playbackTime = timeSnapshotTurret.playbackTime;
+                soundController.audioClip = timeSnapshotTurret.audioClip;
                 break;
             default:
                 break;
@@ -203,7 +215,10 @@ public class TimeEntity : MonoBehaviour, ITargetable
                 currentSnapshot = new TimeSnapshotDoor(transform.position, transform.rotation, doorController.animationProgress, soundController.audioClip, soundController.playbackTime);
                 break;
             case TimePattern.DefaultConveyor:
-                currentSnapshot = new TimeSnapshotConveyor(transform.position, transform.rotation,conveyorController.pushForce, soundController.audioClip, soundController.playbackTime);
+                currentSnapshot = new TimeSnapshotConveyor(transform.position, transform.rotation, conveyorController.pushForce, soundController.audioClip, soundController.playbackTime);
+                break;
+            case TimePattern.DefaultTurret:
+                currentSnapshot = new TimeSnapshotTurret(transform.position, transform.rotation, turretController.aimer.transform.rotation, turretController.currentTargetIndex, soundController.audioClip, soundController.playbackTime);
                 break;
             default:
                 currentSnapshot = new TimeSnapshot(transform.position, transform.rotation);
@@ -211,7 +226,7 @@ public class TimeEntity : MonoBehaviour, ITargetable
         }
         snapshots.AddLast(currentSnapshot);
     }
-    
+
     //Get the snapshots to draw the line
     public LinkedList<TimeSnapshot> GetSnapshots()
     {

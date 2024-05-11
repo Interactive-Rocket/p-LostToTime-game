@@ -17,8 +17,8 @@ public class TimeSnapshot
 
 public class TimeSnapshotSound : TimeSnapshot
 {
-    public AudioClip audioClip { get; set; } 
-    public float playbackTime { get; set; } 
+    public AudioClip audioClip { get; set; }
+    public float playbackTime { get; set; }
 
     public TimeSnapshotSound(Vector3 position, Quaternion rotation, AudioClip audioClip, float playbackTime) : base(position, rotation)
     {
@@ -29,7 +29,7 @@ public class TimeSnapshotSound : TimeSnapshot
 
 public class TimeSnapshotRB : TimeSnapshot
 {
-    
+
     public Vector3 Velocity { get; set; }
     public Vector3 AngularVelocity { get; set; }
 
@@ -59,7 +59,7 @@ public class TimeSnapshotButton : TimeSnapshotSound
     public float Cooldown { get; set; }
     public float CooldownTime { get; set; }
 
-    public TimeSnapshotButton(Vector3 position, Quaternion rotation, bool isPushed, float cooldown, float cooldownTime, AudioClip audioClip, float playbackTime) : base(position, rotation,audioClip,playbackTime)
+    public TimeSnapshotButton(Vector3 position, Quaternion rotation, bool isPushed, float cooldown, float cooldownTime, AudioClip audioClip, float playbackTime) : base(position, rotation, audioClip, playbackTime)
     {
         IsPushed = isPushed;
         Cooldown = cooldown;
@@ -70,21 +70,32 @@ public class TimeSnapshotButton : TimeSnapshotSound
 
 public class TimeSnapshotDoor : TimeSnapshotSound
 {
-    public float animationProgress { get; set; }
+    public float AnimationProgress { get; set; }
 
-    public TimeSnapshotDoor(Vector3 position, Quaternion rotation, float animationProgress, AudioClip audioClip, float playbackTime) : base(position, rotation,audioClip,playbackTime)
+    public TimeSnapshotDoor(Vector3 position, Quaternion rotation, float animationProgress, AudioClip audioClip, float playbackTime) : base(position, rotation, audioClip, playbackTime)
     {
-       this.animationProgress = animationProgress;
+        this.AnimationProgress = animationProgress;
     }
 }
 
+public class TimeSnapshotTurret : TimeSnapshotSound
+{
+    public Quaternion AimerRotation { get; set; }
+    public int CurrentTargetIndex { get; set; }
+
+    public TimeSnapshotTurret(Vector3 position, Quaternion rotation, Quaternion aimerRotation, int currentTargetIndex, AudioClip audioClip, float playbackTime) : base(position, rotation, audioClip, playbackTime)
+    {
+        AimerRotation = aimerRotation;
+        CurrentTargetIndex = currentTargetIndex;
+    }
+}
 
 public class TimeSnapshotConveyor : TimeSnapshotSound
 {
     public float pushForce { get; set; }
 
-    public TimeSnapshotConveyor(Vector3 position, Quaternion rotation, float pushForce, AudioClip audioClip, float playbackTime) : base(position, rotation,audioClip,playbackTime)
+    public TimeSnapshotConveyor(Vector3 position, Quaternion rotation, float pushForce, AudioClip audioClip, float playbackTime) : base(position, rotation, audioClip, playbackTime)
     {
-       this.pushForce = pushForce;
+        this.pushForce = pushForce;
     }
 }
