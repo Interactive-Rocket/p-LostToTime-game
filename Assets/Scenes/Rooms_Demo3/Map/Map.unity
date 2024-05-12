@@ -395,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 2704198321694955916, guid: ff35fc0d8016d2f43a79db18bacd8f0e,
         type: 3}
       propertyPath: sceneToLoad
-      value: Scenes/LevelTwo/L_BoxesBridge
+      value: Scenes/Rooms_Demo3/Lab/Lab
       objectReference: {fileID: 0}
     - target: {fileID: 7710726047766641510, guid: ff35fc0d8016d2f43a79db18bacd8f0e,
         type: 3}
@@ -2780,6 +2780,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1331623152}
+    - target: {fileID: 7202706663368094205, guid: a8ba26c26243c4d72b62c044f91e0c5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.0750003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202706663368094205, guid: a8ba26c26243c4d72b62c044f91e0c5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7354152061790516721, guid: a8ba26c26243c4d72b62c044f91e0c5a,
         type: 3}
       propertyPath: m_Mesh
@@ -2790,6 +2800,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1009043847}
+    - target: {fileID: 7573396954275949778, guid: a8ba26c26243c4d72b62c044f91e0c5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.1250005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573396954275949778, guid: a8ba26c26243c4d72b62c044f91e0c5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.55
+      objectReference: {fileID: 0}
     - target: {fileID: 7769228288313004336, guid: a8ba26c26243c4d72b62c044f91e0c5a,
         type: 3}
       propertyPath: m_Mesh
