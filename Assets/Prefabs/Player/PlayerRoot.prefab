@@ -597,7 +597,7 @@ MonoBehaviour:
   Gravity: -16
   JumpTimeout: 0.1
   FallTimeout: 0.15
-  Grounded: 1
+  Grounded: 0
   GroundedOffset: -0.14
   GroundedRadius: 0.5
   GroundLayers:
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityStartupSound: {fileID: 8300000, guid: 2448f19641679354687b0190104ad040, type: 3}
   abilityLoopSound: {fileID: 8300000, guid: 71268f9a8641c754cae085d2513112f1, type: 3}
-  footstep: {fileID: 8300000, guid: 35c6f08e499509742a3eca537b9cf0a8, type: 3}
+  footstep: {fileID: 8300000, guid: cbc4318d525ac19439e71bbee75b6c73, type: 3}
 --- !u!82 &9143477954622353737
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1034,7 +1034,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: debc3f9f40d5fab40b1f44f6299e6be3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cbc4318d525ac19439e71bbee75b6c73, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1

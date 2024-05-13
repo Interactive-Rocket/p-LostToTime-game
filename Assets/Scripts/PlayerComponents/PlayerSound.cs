@@ -20,7 +20,7 @@ public class PlayerSound : MonoBehaviour
         audioSourceFootsteps.clip = footstep;
         abilityActive = false;
         lastInput = 0;
-        audioSourceFootsteps.volume = 0.2f;
+        audioSourceFootsteps.volume = 1f;
     }
 
     void Update()
