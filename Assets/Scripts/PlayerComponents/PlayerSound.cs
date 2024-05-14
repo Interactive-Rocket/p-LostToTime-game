@@ -9,6 +9,7 @@ public class PlayerSound : MonoBehaviour
     public AudioClip abilityStartupSound;
     public AudioClip abilityLoopSound;
     public AudioClip footstep;
+    public AudioClip jump;
     private bool abilityActive;
     private float loopSustain = 0.1f;
     private float lastInput;
@@ -60,6 +61,11 @@ public class PlayerSound : MonoBehaviour
     public void StopFootsteps()
     {
         audioSourceFootsteps.Stop();
+    }
+
+    public void PlayJumpSound()
+    {
+        AudioManager.Instance.PlayOneShot(jump);
     }
 
 }

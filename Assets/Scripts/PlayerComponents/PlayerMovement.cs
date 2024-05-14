@@ -152,6 +152,9 @@ public class PlayerMovement : MonoBehaviour
 			{
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+				_jumpTimeoutDelta = JumpTimeout;
+				_playerSound.PlayJumpSound();
+				Debug.Log("Jumping");
 			}
 
 			// jump timeout
