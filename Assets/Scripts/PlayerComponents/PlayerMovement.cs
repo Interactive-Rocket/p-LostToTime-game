@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 	private CharacterController _controller;
 	private InputManager _input;
 	private PlayerSound _playerSound;
+	private bool _landSoundPlayed = false;
 
 	private void Awake()
 	{
@@ -147,6 +148,13 @@ public class PlayerMovement : MonoBehaviour
 				_verticalVelocity = -2f;
 			}
 
+			if (!_landSoundPlayed)
+			{
+				_playerSound.PlayLandSound();
+				Debug.Log("Landed");
+				_landSoundPlayed = true;
+			}
+
 			// Jump
 			if (_input.IsJumpping() && _jumpTimeoutDelta <= 0.0f)
 			{
@@ -155,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
 				_jumpTimeoutDelta = JumpTimeout;
 				_playerSound.PlayJumpSound();
 				Debug.Log("Jumping");
+				_landSoundPlayed = false;
 			}
 
 			// jump timeout
@@ -176,6 +185,8 @@ public class PlayerMovement : MonoBehaviour
 
 			// if we are not grounded, do not jump
 			_input.SetJump(false);
+
+			_landSoundPlayed = false;
 		}
 
 		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)

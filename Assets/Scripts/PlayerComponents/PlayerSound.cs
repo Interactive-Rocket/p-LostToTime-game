@@ -10,6 +10,7 @@ public class PlayerSound : MonoBehaviour
     public AudioClip abilityLoopSound;
     public AudioClip footstep;
     public AudioClip jump;
+    public AudioClip land;
     private bool abilityActive;
     private float loopSustain = 0.1f;
     private float lastInput;
@@ -66,6 +67,12 @@ public class PlayerSound : MonoBehaviour
     public void PlayJumpSound()
     {
         AudioManager.Instance.PlayOneShot(jump);
+    }
+
+    public void PlayLandSound()
+    {
+        Debug.Log("Landing in sound");
+        AudioManager.Instance.PlayOneShot(land);
     }
 
 }
