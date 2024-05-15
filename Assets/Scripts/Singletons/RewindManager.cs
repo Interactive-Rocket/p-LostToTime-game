@@ -21,7 +21,9 @@ public class RewindManager : MonoBehaviour
     private bool isRewinding;
     public AudioClip select;
     public AudioClip deselect;
+    public AudioClip focusSound;
     public AudioClip rewindSound;
+    public AudioClip rewindEndSound;
 
     private enum EntityState
     {
@@ -131,7 +133,7 @@ public class RewindManager : MonoBehaviour
             }
             selectedObjects.RemoveAt(i);
         }
-        AudioManager.Instance.PlayOneShot(deselect, 0.5f);
+        AudioManager.Instance.PlayOneShot(deselect, 1f);
 
     }
 
@@ -150,6 +152,10 @@ public class RewindManager : MonoBehaviour
         if (!isRewinding && rewind && selectedObjects.Count > 0)
         {
             AudioManager.Instance.PlayOneShot(rewindSound, 0.5f);
+        }
+        else if (isRewinding && !rewind && selectedObjects.Count > 0)
+        {
+            AudioManager.Instance.PlayOneShot(rewindEndSound, 1f);
         }
 
         isRewinding = rewind;
@@ -299,6 +305,7 @@ public class RewindManager : MonoBehaviour
                 {
                     case EntityState.Focused:
                         renderer.material = particleMaterialFocused;
+                        AudioManager.Instance.PlayOneShot(focusSound, 0.8f);
                         break;
                     case EntityState.Selected:
                         Debug.Log("updating and setting particle color to selected");

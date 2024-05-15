@@ -253,9 +253,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7d00877b01db3b74da65374464d1dcfe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8ebd72611d1f826489d2f3a89263d49f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -263,7 +263,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.54
   MaxDistance: 20
   Pan2D: 0
   rolloffMode: 0
@@ -937,7 +937,9 @@ MonoBehaviour:
     type: 3}
   select: {fileID: 8300000, guid: 113f1bce0849e3a4fac596d8a38f2fcd, type: 3}
   deselect: {fileID: 8300000, guid: c7184b33b5db6064a9ad758dff0c62fc, type: 3}
+  focusSound: {fileID: 8300000, guid: db82bd39605a85044bf28ffae73e2ad9, type: 3}
   rewindSound: {fileID: 8300000, guid: 74ba9f0eae0e67c4fb8ecb3276c0aa2e, type: 3}
+  rewindEndSound: {fileID: 8300000, guid: 5109984105d20904fb7f1ff145c0294e, type: 3}
 --- !u!1001 &399165637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2450,7 +2452,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5cc9be398067fd0498e80f684e810af5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.137
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2552,7 +2554,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a687b7ac47a9ab24cadc2325cf4bb56c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3345,7 +3347,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8f62a3be727572e48b28af8a6b507ba5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0

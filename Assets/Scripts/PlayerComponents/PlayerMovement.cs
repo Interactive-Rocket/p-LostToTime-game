@@ -148,10 +148,10 @@ public class PlayerMovement : MonoBehaviour
 				_verticalVelocity = -2f;
 			}
 
+			// Ensure the landing sound is played once when grounded again
 			if (!_landSoundPlayed)
 			{
 				_playerSound.PlayLandSound();
-				Debug.Log("Landed");
 				_landSoundPlayed = true;
 			}
 
@@ -162,8 +162,7 @@ public class PlayerMovement : MonoBehaviour
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				_jumpTimeoutDelta = JumpTimeout;
 				_playerSound.PlayJumpSound();
-				Debug.Log("Jumping");
-				_landSoundPlayed = false;
+				// _landSoundPlayed = false; // Remove this line
 			}
 
 			// jump timeout
@@ -186,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
 			// if we are not grounded, do not jump
 			_input.SetJump(false);
 
-			_landSoundPlayed = false;
+			// _landSoundPlayed = false; // Remove this line
 		}
 
 		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -194,5 +193,12 @@ public class PlayerMovement : MonoBehaviour
 		{
 			_verticalVelocity += Gravity * Time.deltaTime;
 		}
+
+		// Reset _landSoundPlayed flag when falling below 0 velocity
+		if (!Grounded && _verticalVelocity < 0.0f)
+		{
+			_landSoundPlayed = false;
+		}
 	}
+
 }

@@ -66,7 +66,8 @@ public class PlayerSound : MonoBehaviour
 
     public void PlayJumpSound()
     {
-        AudioManager.Instance.PlayOneShot(jump);
+        Debug.Log("Jumping in sound");
+        AudioManager.Instance.PlayOneShot(jump, 0.7f);
     }
 
     public void PlayLandSound()

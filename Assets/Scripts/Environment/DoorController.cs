@@ -36,25 +36,27 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         float animationProgressTemp = animationProgress;
-    
-        if(!doorTimeEntity.IsRewinding) {
-            if(isOpen) {
+
+        if (!doorTimeEntity.IsRewinding)
+        {
+            if (isOpen)
+            {
                 animationProgress = Mathf.Clamp(animationProgress + Time.deltaTime * animationSpeed, 0, 1);
             }
-            else {
+            else
+            {
                 animationProgress = Mathf.Clamp(animationProgress - Time.deltaTime * animationSpeed, 0, 1);
-                
             }
         }
-        
+
         // Update the animation progress if animationProgress changes
-        if(animationProgressTemp != animationProgress || doorTimeEntity.IsRewinding)
+        if (animationProgressTemp != animationProgress || doorTimeEntity.IsRewinding)
         {
             Debug.Log("Door animation progress: " + animationProgress);
             Debug.Log("Is rewinding: " + doorTimeEntity.IsRewinding);
             SetDoorAnimation(animationProgress);
         }
-        
+
     }
 
     public void OpenDoor()
