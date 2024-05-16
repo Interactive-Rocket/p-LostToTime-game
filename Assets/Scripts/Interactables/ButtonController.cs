@@ -12,7 +12,7 @@ public class ButtonController : MonoBehaviour, IInteractable
     public float cooldown = 5f;
     public float cooldownTime = 0f;
     private TimeEntity timeEntity;
-    private MeshRenderer meshRenderer;
+    //private MeshRenderer meshRenderer;
     public bool wasRewinding = false;
     private bool wasPushed = false;
 
@@ -25,9 +25,9 @@ public class ButtonController : MonoBehaviour, IInteractable
     void Start()
     {
         timeEntity = GetComponent<TimeEntity>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material.color = defaultColour;
-        soundController = GetComponent<SoundController>();
+        //meshRenderer = GetComponent<MeshRenderer>();
+        //meshRenderer.material.color = defaultColour;
+        //soundController = GetComponent<SoundController>();
     }
 
     void Update()
@@ -69,7 +69,8 @@ public class ButtonController : MonoBehaviour, IInteractable
 
         wasRewinding = timeEntity.IsRewinding || timeEntity._isStopped;
 
-        meshRenderer.material.color = isButtonPushed ? activatedColour : defaultColour;
+        //this should be where we animate
+        //meshRenderer.material.color = isButtonPushed ? activatedColour : defaultColour;
     }
 
     public void Interact() {
@@ -80,7 +81,7 @@ public class ButtonController : MonoBehaviour, IInteractable
     {
         // Check that the button gets pushed when we push it and exit rewind (local or global)
         Debug.Log("Button pushed");
-        soundController.Play(pressSound);
+        //soundController.Play(pressSound);
         isButtonPushed = true;
         onButtonPressed.Invoke();
     }
@@ -89,7 +90,7 @@ public class ButtonController : MonoBehaviour, IInteractable
     {
         // Check that the button gets pushed when we push it and exit rewind (local or global)
         Debug.Log("Button unpushed");
-        soundController.Play(releaseSound);
+        //soundController.Play(releaseSound);
         isButtonPushed = false;
         onButtonUnpressed.Invoke();
     }
