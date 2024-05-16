@@ -108,7 +108,7 @@ public class RewindManager : MonoBehaviour
             Debug.Log("Selected " + obj.name);
             Debug.Log("All selected objects: " + selectedObjects.Count);
             UpdateVisuals(obj, EntityState.Selected);
-            AudioManager.Instance.PlayOneShot(select, 0.35f);
+            AudioManager.Instance.PlayOneShot(select, 1f);
         }
         else
         {
@@ -305,7 +305,7 @@ public class RewindManager : MonoBehaviour
                 {
                     case EntityState.Focused:
                         renderer.material = particleMaterialFocused;
-                        AudioManager.Instance.PlayOneShot(focusSound, 0.8f);
+                        AudioManager.Instance.PlayOneShot(focusSound, 1f);
                         break;
                     case EntityState.Selected:
                         Debug.Log("updating and setting particle color to selected");
