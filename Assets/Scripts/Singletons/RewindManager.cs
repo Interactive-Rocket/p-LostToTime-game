@@ -163,6 +163,10 @@ public class RewindManager : MonoBehaviour
         for (int i = selectedObjects.Count - 1; i >= 0; i--)
         {
             GameObject obj = selectedObjects[i];
+            if (obj == null)
+            {
+                continue;
+            }
             TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
             if (timeEntity != null)
             {
@@ -189,17 +193,28 @@ public class RewindManager : MonoBehaviour
 
     public void UpdateSelectedObjectPaths()
     {
-        foreach (GameObject obj in selectedObjects)
+        for (int i = selectedObjects.Count - 1; i >= 0; i--)
         {
-            SnapshotsPathTracer path = obj.GetComponent<SnapshotsPathTracer>();
-            TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
-            if (path != null && timeEntity != null)
+            GameObject obj = selectedObjects[i];
+
+            if (obj != null)
             {
-                Debug.Log("Updating path for " + obj.name);
-                path.SetEntitySnapshots(timeEntity.GetSnapshots());
+                SnapshotsPathTracer path = obj.GetComponent<SnapshotsPathTracer>();
+                TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+
+                if (path != null && timeEntity != null)
+                {
+                    Debug.Log("Updating path for " + obj.name);
+                    path.SetEntitySnapshots(timeEntity.GetSnapshots());
+                }
+            }
+            else
+            {
+                selectedObjects.RemoveAt(i);
             }
         }
     }
+
 
     private void UpdateVisuals(GameObject obj, EntityState state)
     {

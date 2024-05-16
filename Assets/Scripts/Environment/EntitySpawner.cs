@@ -27,7 +27,7 @@ public class EntitySpawner : MonoBehaviour
         {
             // If a prefab is defined, spawn it and schedule its destruction
             GameObject spawnedObject = Instantiate(prefabToSpawn,transform.position,Quaternion.identity);
-            Destroy(spawnedObject,(autoRemoveAfter==0)?10f:autoRemoveAfter);
+            if (autoRemoveAfter > 0) Destroy(spawnedObject,autoRemoveAfter);
         }
         // Schedule next object spawn
         Invoke("SpawnPrefab",spawnDelay);
