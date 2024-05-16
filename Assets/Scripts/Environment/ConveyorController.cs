@@ -12,7 +12,9 @@ public class ConveyorController : MonoBehaviour
     public float pushForce = 5;
     Vector3 pushDirection = Vector3.back;
     public AudioClip activeSound;
+    [SerializeField]
     private SoundController soundController;
+    [SerializeField]
     private TimeEntity timeEntity;
     public bool reversing;
     // Start is called before the first frame update
@@ -20,6 +22,17 @@ public class ConveyorController : MonoBehaviour
     {
         pushedObjects = new List<GameObject>();
         soundController = GetComponent<SoundController>();
+        if (soundController == null){
+            print("missing sound controller");
+        }
+        if (activeSound == null){
+            print("missing activeSound");
+        }
+        soundController.audioClip = activeSound;
+        soundController.Play(activeSound);
+        float skiptime = UnityEngine.Random.Range(0,1f);
+        print(skiptime + " skipped");
+        soundController.SeekTo(skiptime);
         timeEntity = GetComponent<TimeEntity>();
     }
 
