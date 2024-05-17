@@ -43,12 +43,12 @@ public class PlayerInteract : MonoBehaviour
         if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IInteractable tempInteractable))
         {
             focusedInteractable = tempInteractable;
-            if (HUDManager.Instance != null) HUDManager.Instance.InteractionPrompt = true;
+            if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = true;
         }
         else
         {
             focusedInteractable = null;
-            if (HUDManager.Instance != null) HUDManager.Instance.InteractionPrompt = false;
+            if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = false;
         }
     }
 
