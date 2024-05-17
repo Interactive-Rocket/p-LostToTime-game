@@ -24,6 +24,13 @@ public class PlayerInteract : MonoBehaviour
         if (_input.IsInteracting())
         {
             SendInteract();
+
+            /* This might not work if we have the interaction and grabbing be the same button
+               Keep it for now, but if this presents any issues we scrap it.
+               Ideally, if we have a component on grabbable objects we can check for that, and
+               if no such component exists we can make _input.InteractInput false.
+            */
+            _input.InteractInput(false);
         }
     }
 
