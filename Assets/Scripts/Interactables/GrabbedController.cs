@@ -13,8 +13,10 @@ public class GrabbedController : MonoBehaviour, IInteractable
     public float MagicGrabMoveSpeedNumber = 20f; //this REALLY should not be a per object (on component) variable lmaooo!!!! (if we want it tweakable in editor)
     private float cameraHeight = 1.375f;
 
-    void WoweeMeGotGrabd() {
-        if (_input == null || grabOffset == null || rb == null) {
+    void WoweeMeGotGrabd()
+    {
+        if (_input == null || grabOffset == null || rb == null)
+        {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             _input = player.GetComponent<InputManager>();
             grabOffset = player.GetComponent<PlayerInteract>().InteractionRange;
@@ -28,17 +30,21 @@ public class GrabbedController : MonoBehaviour, IInteractable
         initialized = true;
     }
 
-    void MeFreee() {
+    void MeFreee()
+    {
         grabbed = false;
     }
 
-    public void Interact() {
-        if (!stillHasNotReleasedThaMofoButton && !grabbed) {
+    public void Interact()
+    {
+        if (!stillHasNotReleasedThaMofoButton && !grabbed)
+        {
             WoweeMeGotGrabd();
         }
     }
 
-    void ApplyGrab() {
+    void ApplyGrab()
+    {
         Vector3 toPos = Camera.main.transform.position + Camera.main.transform.forward * (grabOffset + size);
         toPos.y = Mathf.Max(toPos.y, Camera.main.transform.position.y - cameraHeight + size);
         Vector3 vecToPos = toPos - rb.position;
@@ -46,13 +52,19 @@ public class GrabbedController : MonoBehaviour, IInteractable
         //rb.MovePosition(toPos);
     }
 
-    void Update() {
-        if (initialized) {
-            if (stillHasNotReleasedThaMofoButton && !(_input.IsInteracting())) {
+    void Update()
+    {
+        if (initialized)
+        {
+            if (stillHasNotReleasedThaMofoButton && !_input.IsInteracting())
+            {
                 stillHasNotReleasedThaMofoButton = false;
             }
-            if (grabbed) {
-                if (!stillHasNotReleasedThaMofoButton && _input.IsInteracting()) {
+            
+            if (grabbed)
+            {
+                if (!stillHasNotReleasedThaMofoButton && _input.IsInteracting())
+                {
                     stillHasNotReleasedThaMofoButton = true;
                     MeFreee(); //you are free now! Run, box, run!
                 }
