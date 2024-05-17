@@ -30,7 +30,7 @@ public class DoorController : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
-        //soundController = GetComponent<SoundController>();
+        soundController = GetComponent<SoundController>();
     }
 
     void Update()
@@ -60,13 +60,13 @@ public class DoorController : MonoBehaviour
     public void OpenDoor()
     {
         ChangeDoorState(true);
-        //soundController.Play(openSound);
+        soundController.Play(openSound);
     }
 
     public void CloseDoor()
     {
         ChangeDoorState(false);
-        //soundController.Play(closeSound);
+        soundController.Play(closeSound);
     }
 
     public void ToggleDoor()

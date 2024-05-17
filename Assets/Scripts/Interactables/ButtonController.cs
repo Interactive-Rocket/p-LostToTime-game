@@ -27,7 +27,7 @@ public class ButtonController : MonoBehaviour, IInteractable
         timeEntity = GetComponent<TimeEntity>();
         //meshRenderer = GetComponent<MeshRenderer>();
         //meshRenderer.material.color = defaultColour;
-        //soundController = GetComponent<SoundController>();
+        soundController = GetComponent<SoundController>();
     }
 
     void Update()
@@ -81,7 +81,7 @@ public class ButtonController : MonoBehaviour, IInteractable
     {
         // Check that the button gets pushed when we push it and exit rewind (local or global)
         Debug.Log("Button pushed");
-        //soundController.Play(pressSound);
+        soundController.Play(pressSound);
         isButtonPushed = true;
         onButtonPressed.Invoke();
     }
@@ -90,7 +90,7 @@ public class ButtonController : MonoBehaviour, IInteractable
     {
         // Check that the button gets pushed when we push it and exit rewind (local or global)
         Debug.Log("Button unpushed");
-        //soundController.Play(releaseSound);
+        soundController.Play(releaseSound);
         isButtonPushed = false;
         onButtonUnpressed.Invoke();
     }
