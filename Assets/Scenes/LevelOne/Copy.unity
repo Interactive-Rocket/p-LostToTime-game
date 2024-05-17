@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029143, g: 0.22572419, b: 0.30693057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3852,6 +3852,7 @@ MonoBehaviour:
     type: 3}
   HUDPrefab: {fileID: 1692916813957765883, guid: 5d966ed67409f05409fa0c6f315671f6,
     type: 3}
+  PauseMenuPrefab: {fileID: 0}
   spawnPoint: {fileID: 1677701967}
   isAlive: 1
   controlEnabled: 1
@@ -10033,6 +10034,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingEntity (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1077755463841450474, guid: ddcbf85da42714327967bca20bca509a,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077755463841450474, guid: ddcbf85da42714327967bca20bca509a,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077755463841450474, guid: ddcbf85da42714327967bca20bca509a,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077755463841450474, guid: ddcbf85da42714327967bca20bca509a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8368184150863724729, guid: ddcbf85da42714327967bca20bca509a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -10101,8 +10122,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 613805950313400647, guid: ddcbf85da42714327967bca20bca509a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983911350}
   m_SourcePrefab: {fileID: 100100000, guid: ddcbf85da42714327967bca20bca509a, type: 3}
+--- !u!1 &1983911343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 613805950313400647, guid: ddcbf85da42714327967bca20bca509a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1980658858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1983911350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983911343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172d926b228a88889966ad31497a7249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MagicGrabMoveSpeedNumber: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
