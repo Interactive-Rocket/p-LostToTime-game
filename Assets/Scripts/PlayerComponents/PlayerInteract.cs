@@ -41,7 +41,7 @@ public class PlayerInteract : MonoBehaviour
         bool interactableInRange = Physics.Raycast(ray, out RaycastHit hitInfo, InteractionRange);
 
         if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IInteractable tempInteractable))
-        {
+        {  
             focusedInteractable = tempInteractable;
             if (HUDManager.Instance != null) HUDManager.Instance.InteractionPrompt = true;
         }

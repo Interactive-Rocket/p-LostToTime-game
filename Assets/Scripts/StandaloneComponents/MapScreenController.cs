@@ -14,11 +14,23 @@ public class MapScreenController : MonoBehaviour
     [SerializeField] private int m_screenIndexInMaterials;
     private Material m_currentScreenMaterial;
     private MeshRenderer m_meshRenderer;
+    private MapInteractable[] m_interactables;
     void Awake()
     {
         GetGameObjectScreenMaterial();
-    }
+        m_interactables = GetComponentsInChildren<MapInteractable>();
+        Debug.Log(m_interactables.Length);
+        DisableInteractableHotspots(0);
 
+    }
+    private void DisableInteractableHotspots(int screenIndex)
+    {
+        if (m_interactables == null) return;
+        for (int i = 1; i < m_interactables.Length; i++) //i=0 is the first screen, all the other hotspots will be disabled
+        {
+            m_interactables[i].gameObject.SetActive(screenIndex != 0);
+        }
+    }
     private void GetGameObjectScreenMaterial()
     {
         if (m_screenMaterials.Length == 0) return; // Check if the component has screens to show
@@ -44,6 +56,7 @@ public class MapScreenController : MonoBehaviour
             Currently, the player could potentially go directly to the daugther screen 
             without selecting the subject details.
         */
+        DisableInteractableHotspots(screenIndex);
         UpdateMeshScreenMaterial(m_currentScreen);
     }
 
@@ -58,6 +71,7 @@ public class MapScreenController : MonoBehaviour
 
     public void CloseScreen()
     {
+        DisableInteractableHotspots(0);
         m_currentScreen = 0;
         UpdateMeshScreenMaterial(m_currentScreen);
         //m_currentScreenMaterial = m_screenMaterials[m_currentScreen];
