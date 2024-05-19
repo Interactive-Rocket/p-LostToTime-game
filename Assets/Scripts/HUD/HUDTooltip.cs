@@ -1,9 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(HUDManager))]
 public class HUDTooltip : MonoBehaviour
 {
     [SerializeField] private GameObject[] tooltipArray;
+    [SerializeField] private Vector2 startPosition;
+    [SerializeField] private Vector2 endPosition;
+    [SerializeField] private float animationDuration = 1.0f;
     private int currentIndex = 0;
 
     void Awake()
@@ -13,7 +17,7 @@ public class HUDTooltip : MonoBehaviour
 
     public void OnDisplayTooltip()
     {
-        if (tooltipArray != null && HUDManager.Instance != null) currentIndex = HUDManager.Instance.displayedTooltipIndex;
+        if (HUDManager.Instance != null) currentIndex = HUDManager.Instance.displayedTooltipIndex;
         OnDisplayTooltip(currentIndex);
     }
 
@@ -23,7 +27,17 @@ public class HUDTooltip : MonoBehaviour
 
         if (tooltipArray.Length > currentIndex)
         {
-            if (tooltipArray[currentIndex] != null) tooltipArray[currentIndex].SetActive(true);
+
+            if (tooltipArray.Length > currentIndex)
+            {
+                if (tooltipArray[currentIndex] != null)
+                {
+                    StopAllCoroutines();
+                    OnHideTooltip();
+                    tooltipArray[currentIndex].SetActive(true);
+                    StartCoroutine(AnimateTooltip(tooltipArray[currentIndex]));
+                }
+            }
         }
     }
 
@@ -33,8 +47,29 @@ public class HUDTooltip : MonoBehaviour
         {
             for (int i = 0; i < tooltipArray.Length; i++)
             {
-                if (tooltipArray[i] != null) tooltipArray[i].SetActive(false);
+                if (tooltipArray[i] != null)
+                {
+                    tooltipArray[i].SetActive(false);
+                    tooltipArray[i].transform.localPosition = startPosition;
+                }
             }
         }
+    }
+
+    private IEnumerator AnimateTooltip(GameObject tooltip)
+    {
+        float elapsedTime = 0f;
+        Vector2 initialPosition = startPosition;
+
+        while (elapsedTime < animationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / animationDuration;
+            t = Mathf.SmoothStep(0f, 1f, t);
+            tooltip.transform.localPosition = Vector2.Lerp(initialPosition, endPosition, t);
+            yield return null;
+        }
+
+        tooltip.transform.localPosition = endPosition;
     }
 }
