@@ -93,9 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6736812483341728200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1944668d447a144b03cfca1bd888a8, type: 3}
+  m_Script: {fileID: 11500000, guid: ded9f259a6abdb141bffc092bdda1efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountOfLayers: 30
+  _amountOfLayers: 5
   _finalOpacity: 1
-  _baseMaterial: {fileID: 2100000, guid: c7aeef883efd46f4a971ff5ff34c046f, type: 2}
+  _baseMaterial: {fileID: 2100000, guid: 1a7347737fd667d479bdea2f3a0576d8, type: 2}
