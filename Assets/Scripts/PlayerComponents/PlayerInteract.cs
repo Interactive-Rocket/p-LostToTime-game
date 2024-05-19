@@ -5,11 +5,18 @@ public interface IInteractable
     public void Interact();
 }
 
+public interface IHoverable
+{
+    public void Hover();
+    public void Unhover();
+}
+
 [RequireComponent(typeof(InputManager))]
 public class PlayerInteract : MonoBehaviour
 {
     public float InteractionRange = 10f;
     private IInteractable focusedInteractable = null;
+    private IHoverable focusedHoverable = null;
     private InputManager _input;
 
     void Awake()
@@ -40,8 +47,9 @@ public class PlayerInteract : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
         bool interactableInRange = Physics.Raycast(ray, out RaycastHit hitInfo, InteractionRange);
 
+        // Interactable interface
         if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IInteractable tempInteractable))
-        {  
+        {
             focusedInteractable = tempInteractable;
             if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = true;
         }
@@ -49,6 +57,22 @@ public class PlayerInteract : MonoBehaviour
         {
             focusedInteractable = null;
             if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = false;
+        }
+
+        // Hoverable interface, only send "pulses" when first hovering and unhovering
+        if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IHoverable tempHoverable))
+        {
+            if (tempHoverable != focusedHoverable)
+            {
+                if (focusedHoverable != null) focusedHoverable.Unhover();
+                focusedHoverable = tempHoverable;
+                focusedHoverable.Hover();
+            }
+        }
+        else
+        {
+            if (focusedHoverable != null) focusedHoverable.Unhover();
+            focusedHoverable = null;
         }
     }
 
