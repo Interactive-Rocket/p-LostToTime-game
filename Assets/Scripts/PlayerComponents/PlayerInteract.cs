@@ -18,6 +18,7 @@ public class PlayerInteract : MonoBehaviour
     private IInteractable focusedInteractable = null;
     private IHoverable focusedHoverable = null;
     private InputManager _input;
+    public AudioClip interactSound;
 
     void Awake()
     {
@@ -82,6 +83,7 @@ public class PlayerInteract : MonoBehaviour
         {
             focusedInteractable.Interact();
             // additional things could be added here, such as interact audio
+            AudioManager.Instance.PlayOneShot(interactSound);
         }
     }
 }

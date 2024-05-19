@@ -9,6 +9,8 @@ public class PlayerSound : MonoBehaviour
     public AudioClip abilityStartupSound;
     public AudioClip abilityLoopSound;
     public AudioClip footstep;
+    public AudioClip jump;
+    public AudioClip land;
     private bool abilityActive;
     private float loopSustain = 0.1f;
     private float lastInput;
@@ -20,7 +22,7 @@ public class PlayerSound : MonoBehaviour
         audioSourceFootsteps.clip = footstep;
         abilityActive = false;
         lastInput = 0;
-        audioSourceFootsteps.volume = 0.2f;
+        audioSourceFootsteps.volume = 1f;
     }
 
     void Update()
@@ -60,6 +62,18 @@ public class PlayerSound : MonoBehaviour
     public void StopFootsteps()
     {
         audioSourceFootsteps.Stop();
+    }
+
+    public void PlayJumpSound()
+    {
+        Debug.Log("Jumping in sound");
+        AudioManager.Instance.PlayOneShot(jump, 0.7f);
+    }
+
+    public void PlayLandSound()
+    {
+        Debug.Log("Landing in sound");
+        AudioManager.Instance.PlayOneShot(land);
     }
 
 }

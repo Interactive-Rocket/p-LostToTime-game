@@ -48,6 +48,8 @@ public class TimeSnapshotRBLocalTime : TimeSnapshot
 
     public TimeSnapshotRBLocalTime(Vector3 position, Quaternion rotation, Vector3 velocity, Vector3 angularVelocity, float localTime) : base(position, rotation)
     {
+        Velocity = velocity;
+        AngularVelocity = angularVelocity;
         LocalTime = localTime;
     }
 }
