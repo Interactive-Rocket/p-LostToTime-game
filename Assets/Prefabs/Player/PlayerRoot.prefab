@@ -152,7 +152,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 3
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -593,13 +593,13 @@ MonoBehaviour:
   MoveSpeed: 3.5
   SprintSpeed: 4.5
   SpeedChangeRate: 10
-  JumpHeight: 0.7
+  JumpHeight: 1
   Gravity: -16
   JumpTimeout: 0.1
   FallTimeout: 0.15
   Grounded: 0
   GroundedOffset: -0.14
-  GroundedRadius: 0.5
+  GroundedRadius: 0.3
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7965885535006394065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c58e4728e53714af9837216e3bca866c, type: 3}
   m_Name: 

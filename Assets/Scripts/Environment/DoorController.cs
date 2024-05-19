@@ -85,7 +85,7 @@ public class DoorController : MonoBehaviour
     private void SetDoorAnimation(float animationProgress)
     {
         Debug.Log($"Setting door animation progress to: {animationProgress}");
-        animator.Play("DoorOpen", 0, animationProgress);
+        animator.Play("HatchAnimation", 0, animationProgress);
         animator.speed = 0;
     }
 }

@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
 	private CharacterController _controller;
 	private InputManager _input;
 	private PlayerSound _playerSound;
+	private MovingPlatform _movingPlatform;
+	private Vector3 _positionRelativeToPlatform;
+	private Vector3 _platformVelocity;
+	private Vector3 _previousPlatformVelocity;
 	private bool _landSoundPlayed = false;
 
 	private void Awake()
@@ -70,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		JumpAndGravity();
 		GroundedCheck();
+		FollowPlatform();
 		Move();
 	}
 
@@ -78,6 +83,19 @@ public class PlayerMovement : MonoBehaviour
 		// set sphere position, with offset
 		Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+	}
+	private void FollowPlatform(){
+		if(_movingPlatform == null){
+			_platformVelocity = Vector3.zero;
+			return;
+		}
+
+        Vector3 angle_change = _movingPlatform._angle_change;
+        Vector3 pos_diff = _movingPlatform._pos_diff;
+		Vector3 angular_movement = Quaternion.Euler(angle_change) * _positionRelativeToPlatform - _positionRelativeToPlatform;
+		Vector3 total_diff = pos_diff + angular_movement;
+		_platformVelocity = total_diff / (Time.time - _movingPlatform._last_time);
+		_positionRelativeToPlatform = transform.position - _movingPlatform._position;
 	}
 
 	private void Move()
@@ -92,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
 		if (_input.GetMove() == Vector2.zero) targetSpeed = 0.0f;
 
 		// a reference to the players current horizontal velocity
-		float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
-
+		float currentHorizontalSpeed = (new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z) - _previousPlatformVelocity).magnitude;
+		_previousPlatformVelocity = _platformVelocity;
 		float speedOffset = 0.1f;
 		float inputMagnitude = _input.GetAnalogMovement() ? _input.GetMove().magnitude : 1f;
 
@@ -124,9 +142,10 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		// move the player
-		_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		Vector3 finalMovement = (inputDirection.normalized * _speed + new Vector3(0, _verticalVelocity, 0) + _platformVelocity) * Time.deltaTime;
+		_controller.Move(finalMovement);
 
-		if (Grounded && inputDirection.magnitude > 0 && _speed / MoveSpeed >= 1)
+		if (Grounded && inputDirection.magnitude > 0 /*&& currentHorizontalSpeed / MoveSpeed >= 1*/)
 		{
 			_playerSound.PlayFootstep(_speed / MoveSpeed);
 		}
@@ -198,6 +217,25 @@ public class PlayerMovement : MonoBehaviour
 		if (!Grounded && _verticalVelocity < 0.0f)
 		{
 			_landSoundPlayed = false;
+		}
+	}
+
+	public void setMovingPlatform(MovingPlatform movingPlatform){
+		if (_movingPlatform == null){
+			_movingPlatform = movingPlatform;
+			_movingPlatform.UpdatePosition();
+			_movingPlatform.UpdatePosition();
+			_platformVelocity = Vector3.zero;
+			_positionRelativeToPlatform = transform.position - _movingPlatform._position;
+		}
+	}
+
+	
+	public void removeMovingPlatform(MovingPlatform movingPlatform){
+		if (_movingPlatform == movingPlatform){
+			_movingPlatform = null;
+			_platformVelocity = Vector3.zero;
+			_positionRelativeToPlatform = Vector3.zero;
 		}
 	}
 

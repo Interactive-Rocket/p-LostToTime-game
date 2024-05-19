@@ -12,7 +12,7 @@ public class ButtonController : MonoBehaviour, IInteractable
     public float cooldown = 5f;
     public float cooldownTime = 0f;
     private TimeEntity timeEntity;
-    private MeshRenderer meshRenderer;
+    //private MeshRenderer meshRenderer;
     public bool wasRewinding = false;
     private bool wasPushed = false;
 
@@ -25,8 +25,8 @@ public class ButtonController : MonoBehaviour, IInteractable
     void Start()
     {
         timeEntity = GetComponent<TimeEntity>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material.color = defaultColour;
+        //meshRenderer = GetComponent<MeshRenderer>();
+        //meshRenderer.material.color = defaultColour;
         soundController = GetComponent<SoundController>();
     }
 
@@ -69,7 +69,8 @@ public class ButtonController : MonoBehaviour, IInteractable
 
         wasRewinding = timeEntity.IsRewinding || timeEntity._isStopped;
 
-        meshRenderer.material.color = isButtonPushed ? activatedColour : defaultColour;
+        //this should be where we animate
+        //meshRenderer.material.color = isButtonPushed ? activatedColour : defaultColour;
     }
 
     public void Interact() {

@@ -100,7 +100,22 @@ PrefabInstance:
     - target: {fileID: 5942994468291959207, guid: b2b7aa78c5c5842f782ef6a5dd89a911,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5058
+      value: 5338
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942994468291959207, guid: b2b7aa78c5c5842f782ef6a5dd89a911,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942994468291959207, guid: b2b7aa78c5c5842f782ef6a5dd89a911,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942994468291959207, guid: b2b7aa78c5c5842f782ef6a5dd89a911,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -214,6 +229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyerBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124007660311776843, guid: 8591b3ebd72dd4c65b572df48c28cff3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2657
       objectReference: {fileID: 0}
     - target: {fileID: 2544564884214236848, guid: 8591b3ebd72dd4c65b572df48c28cff3,
         type: 3}
