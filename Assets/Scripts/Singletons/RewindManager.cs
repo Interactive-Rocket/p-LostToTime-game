@@ -57,14 +57,37 @@ public class RewindManager : MonoBehaviour
     {
         Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        if (Physics.Raycast(ray, out RaycastHit hit)) { }
-        GameObject hitObject = hit.collider.gameObject;
-        //Debug.Log(hitObject.name);
-        TimeEntity timeEntity = hitObject.GetComponentInParent<TimeEntity>();
-        if (timeEntity != null)
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            // SetupFocus(hitObject);
-            if (!selectedObjects.Contains(hitObject) && hitObject != currentFocusObject)
+            GameObject hitObject = hit.collider.gameObject;
+            //Debug.Log(hitObject.name);
+
+            TimeEntity timeEntity = hitObject.GetComponentInParent<TimeEntity>();
+            GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
+
+            if (timeEntity != null)
+            {
+                // SetupFocus(hitObject);
+                if (!selectedObjects.Contains(timeEntityObject) && timeEntityObject != currentFocusObject)
+                {
+                    if (currentFocusObject != null)
+                    {
+                        if (selectedObjects.Contains(currentFocusObject))
+                        {
+                            UpdateVisuals(currentFocusObject, EntityState.Selected);
+                        }
+                        else
+                        {
+                            Debug.Log("Deselecting " + currentFocusObject.name);
+                            ResetVisuals(currentFocusObject);
+                        }
+                    }
+                    UpdateVisuals(timeEntityObject, EntityState.Focused);
+                    currentFocusObject = timeEntityObject;
+                }
+            }
+            else
             {
                 if (currentFocusObject != null)
                 {
@@ -77,37 +100,21 @@ public class RewindManager : MonoBehaviour
                         Debug.Log("Deselecting " + currentFocusObject.name);
                         ResetVisuals(currentFocusObject);
                     }
+                    currentFocusObject = null;
                 }
-                UpdateVisuals(hitObject, EntityState.Focused);
-                currentFocusObject = hitObject;
-            }
-        }
-        else
-        {
-            if (currentFocusObject != null)
-            {
-                if (selectedObjects.Contains(currentFocusObject))
-                {
-                    UpdateVisuals(currentFocusObject, EntityState.Selected);
-                }
-                else
-                {
-                    Debug.Log("Deselecting " + currentFocusObject.name);
-                    ResetVisuals(currentFocusObject);
-                }
-                currentFocusObject = null;
             }
         }
     }
 
+
     public void SelectObject(GameObject obj)
     {
-        if (!selectedObjects.Contains(obj))
+        TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+        GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
+        if (!selectedObjects.Contains(timeEntityObject))
         {
-            selectedObjects.Add(obj);
-            Debug.Log("Selected " + obj.name);
-            Debug.Log("All selected objects: " + selectedObjects.Count);
-            UpdateVisuals(obj, EntityState.Selected);
+            selectedObjects.Add(timeEntityObject);
+            UpdateVisuals(timeEntityObject, EntityState.Selected);
             AudioManager.Instance.PlayOneShot(select, 1f);
         }
         else
