@@ -22,7 +22,7 @@ public class PlayerSound : MonoBehaviour
         audioSourceFootsteps.clip = footstep;
         abilityActive = false;
         lastInput = 0;
-        audioSourceFootsteps.volume = 1f;
+        audioSourceFootsteps.volume = 0.5f;
     }
 
     void Update()
@@ -67,13 +67,13 @@ public class PlayerSound : MonoBehaviour
     public void PlayJumpSound()
     {
         Debug.Log("Jumping in sound");
-        AudioManager.Instance.PlayOneShot(jump, 0.7f);
+        AudioManager.Instance.PlayOneShot(jump, 0.5f);
     }
 
     public void PlayLandSound()
     {
         Debug.Log("Landing in sound");
-        AudioManager.Instance.PlayOneShot(land);
+        AudioManager.Instance.PlayOneShot(land, 0.5f);
     }
 
 }
