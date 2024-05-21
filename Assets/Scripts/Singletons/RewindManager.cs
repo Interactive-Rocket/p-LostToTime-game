@@ -16,6 +16,7 @@ public class RewindManager : MonoBehaviour
     public Material pathMaterialRewinding;
 
     private GameObject currentFocusObject;
+    private bool focusSoundPlayed = false;
     public GameObject particleSystemPrefab;
     private int currentlyFocusedObj;
     private bool isRewinding;
@@ -81,12 +82,18 @@ public class RewindManager : MonoBehaviour
                         }
                     }
                     currentFocusObject = timeEntityObject;
+                    focusSoundPlayed = false;  // Reset the flag when focus changes
                 }
 
-                // update to focused state only if not in selectedObjects
+                // Update to focused state only if not in selectedObjects
                 if (!selectedObjects.Contains(timeEntityObject))
                 {
                     UpdateVisuals(timeEntityObject, EntityState.Focused);
+                    if (!focusSoundPlayed)
+                    {
+                        AudioManager.Instance.PlayOneShot(focusSound, 1f);
+                        focusSoundPlayed = true;
+                    }
                 }
                 else
                 {
@@ -106,6 +113,7 @@ public class RewindManager : MonoBehaviour
                         ResetVisuals(currentFocusObject);
                     }
                     currentFocusObject = null;
+                    focusSoundPlayed = false;
                 }
             }
         }
@@ -122,10 +130,10 @@ public class RewindManager : MonoBehaviour
                     ResetVisuals(currentFocusObject);
                 }
                 currentFocusObject = null;
+                focusSoundPlayed = false;
             }
         }
     }
-
 
     public void SelectObject(GameObject obj)
     {
@@ -320,7 +328,6 @@ public class RewindManager : MonoBehaviour
             {
                 case EntityState.Focused:
                     path.ChangeMaterial(pathMaterialFocused);
-                    AudioManager.Instance.PlayOneShot(focusSound, 1f);
                     break;
                 case EntityState.Selected:
                     path.ChangeMaterial(pathMaterialSelected);
@@ -371,7 +378,6 @@ public class RewindManager : MonoBehaviour
                     {
                         case EntityState.Focused:
                             renderer.material = particleMaterialFocused;
-                            AudioManager.Instance.PlayOneShot(focusSound, 1f);
                             break;
                         case EntityState.Selected:
                             renderer.material = particleMaterialSelected;
