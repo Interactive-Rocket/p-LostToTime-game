@@ -248,7 +248,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1376
+  m_VersionIndex: 1385
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -372,7 +372,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4625227943526095644
 Transform:
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1662
+  m_VersionIndex: 1671
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -753,10 +753,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 484701889099202075, guid: 7b4115399806a40e4be962f38a310d61,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2134870565761253887, guid: 7b4115399806a40e4be962f38a310d61,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2871
+      value: 2880
       objectReference: {fileID: 0}
     - target: {fileID: 2134870565761253887, guid: 7b4115399806a40e4be962f38a310d61,
         type: 3}
@@ -772,6 +777,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SelectedVertices.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990485000039336666, guid: 7b4115399806a40e4be962f38a310d61,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5662960413188975690, guid: 7b4115399806a40e4be962f38a310d61,
         type: 3}
@@ -826,7 +836,7 @@ PrefabInstance:
     - target: {fileID: 7727811863645118333, guid: 7b4115399806a40e4be962f38a310d61,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2518
+      value: 2527
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
