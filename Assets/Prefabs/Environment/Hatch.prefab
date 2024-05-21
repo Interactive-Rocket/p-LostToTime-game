@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5091119925311431586}
   doorAnimation: {fileID: 7400000, guid: 9e2c36212f563647aa3ef7006f9e6b6f, type: 2}
-  isOpen: 1
+  isOpen: 0
   animationProgress: 0
   animationSpeed: 1
   openSound: {fileID: 8300000, guid: ec0c74be74c1dcb85ae01cfbe0972747, type: 3}
