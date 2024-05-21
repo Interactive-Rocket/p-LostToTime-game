@@ -24,6 +24,7 @@ public class DoorController : MonoBehaviour
         {
             Debug.Log("No time entity found for door.");
         }
+        SetDoorAnimation(animationProgress); //make sure it starts in the right position and isnt playing the animation on repeat
     }
 
     void Start()
@@ -41,11 +42,11 @@ public class DoorController : MonoBehaviour
         {
             if (isOpen)
             {
-                animationProgress = Mathf.Clamp(animationProgress + Time.deltaTime * animationSpeed, 0, 1);
+                animationProgress = Mathf.Clamp(animationProgress + Time.deltaTime * animationSpeed, 0, 0.999999f);
             }
             else
             {
-                animationProgress = Mathf.Clamp(animationProgress - Time.deltaTime * animationSpeed, 0, 1);
+                animationProgress = Mathf.Clamp(animationProgress - Time.deltaTime * animationSpeed, 0, 0.999999f);
             }
         }
 
