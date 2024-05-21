@@ -12,6 +12,11 @@ public class GrabbedController : MonoBehaviour, IInteractable
     private bool initialized = false;
     public float MagicGrabMoveSpeedNumber = 20f; //this REALLY should not be a per object (on component) variable lmaooo!!!! (if we want it tweakable in editor)
     private float cameraHeight = 1.375f;
+    private TimeEntity tent;
+
+    void Start() {
+        tent = GetComponent<TimeEntity>();
+    }
 
     void WoweeMeGotGrabd()
     {
@@ -37,7 +42,7 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (!stillHasNotReleasedThaMofoButton && !grabbed)
+        if (!stillHasNotReleasedThaMofoButton && !grabbed && !tent.IsRewinding)
         {
             WoweeMeGotGrabd();
         }
@@ -67,6 +72,9 @@ public class GrabbedController : MonoBehaviour, IInteractable
                 {
                     stillHasNotReleasedThaMofoButton = true;
                     MeFreee(); //you are free now! Run, box, run!
+                }
+                if (tent.IsRewinding) {
+                    MeFreee();
                 }
                 ApplyGrab();
             }
