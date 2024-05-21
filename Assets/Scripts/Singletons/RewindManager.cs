@@ -61,15 +61,13 @@ public class RewindManager : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             GameObject hitObject = hit.collider.gameObject;
-            //Debug.Log(hitObject.name);
 
             TimeEntity timeEntity = hitObject.GetComponentInParent<TimeEntity>();
             GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
 
             if (timeEntity != null)
             {
-                // SetupFocus(hitObject);
-                if (!selectedObjects.Contains(timeEntityObject) && timeEntityObject != currentFocusObject)
+                if (timeEntityObject != currentFocusObject)
                 {
                     if (currentFocusObject != null)
                     {
@@ -79,12 +77,20 @@ public class RewindManager : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Deselecting " + currentFocusObject.name);
                             ResetVisuals(currentFocusObject);
                         }
                     }
-                    UpdateVisuals(timeEntityObject, EntityState.Focused);
                     currentFocusObject = timeEntityObject;
+                }
+
+                // update to focused state only if not in selectedObjects
+                if (!selectedObjects.Contains(timeEntityObject))
+                {
+                    UpdateVisuals(timeEntityObject, EntityState.Focused);
+                }
+                else
+                {
+                    UpdateVisuals(timeEntityObject, EntityState.Selected);
                 }
             }
             else
@@ -97,11 +103,25 @@ public class RewindManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Deselecting " + currentFocusObject.name);
                         ResetVisuals(currentFocusObject);
                     }
                     currentFocusObject = null;
                 }
+            }
+        }
+        else
+        {
+            if (currentFocusObject != null)
+            {
+                if (selectedObjects.Contains(currentFocusObject))
+                {
+                    UpdateVisuals(currentFocusObject, EntityState.Selected);
+                }
+                else
+                {
+                    ResetVisuals(currentFocusObject);
+                }
+                currentFocusObject = null;
             }
         }
     }
@@ -116,9 +136,6 @@ public class RewindManager : MonoBehaviour
             selectedObjects.Add(timeEntityObject);
             UpdateVisuals(timeEntityObject, EntityState.Selected);
             AudioManager.Instance.PlayOneShot(select, 1f);
-        }
-        else
-        {
         }
     }
 
@@ -141,18 +158,18 @@ public class RewindManager : MonoBehaviour
             selectedObjects.RemoveAt(i);
         }
         AudioManager.Instance.PlayOneShot(deselect, 1f);
-
     }
 
     public void DeselectObject(GameObject obj)
     {
-        if (selectedObjects.Contains(obj))
+        TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+        GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
+        if (selectedObjects.Contains(timeEntityObject))
         {
-            selectedObjects.Remove(obj);
-            ResetVisuals(obj);
+            selectedObjects.Remove(timeEntityObject);
+            ResetVisuals(timeEntityObject);
         }
     }
-
 
     public void RewindObjects(bool rewind)
     {
@@ -174,7 +191,7 @@ public class RewindManager : MonoBehaviour
             {
                 continue;
             }
-            TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+            TimeEntity timeEntity = obj.GetComponent<TimeEntity>();
             if (timeEntity != null)
             {
                 if (timeEntity.Rewind(rewind))
@@ -196,8 +213,6 @@ public class RewindManager : MonoBehaviour
         }
     }
 
-
-
     public void UpdateSelectedObjectPaths()
     {
         for (int i = selectedObjects.Count - 1; i >= 0; i--)
@@ -206,12 +221,11 @@ public class RewindManager : MonoBehaviour
 
             if (obj != null)
             {
+                TimeEntity timeEntity = obj.GetComponent<TimeEntity>();
                 SnapshotsPathTracer path = obj.GetComponent<SnapshotsPathTracer>();
-                TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
 
-                if (path != null && timeEntity != null)
+                if (timeEntity != null && path != null)
                 {
-                    Debug.Log("Updating path for " + obj.name);
                     path.SetEntitySnapshots(timeEntity.GetSnapshots());
                 }
             }
@@ -222,83 +236,111 @@ public class RewindManager : MonoBehaviour
         }
     }
 
-
     private void UpdateVisuals(GameObject obj, EntityState state)
     {
-        UpdateParticleSystem(obj, state);
-        UpdatePath(obj, state);
+        TimeEntity timeEntity = obj.GetComponent<TimeEntity>();
+        GameObject timeEntityObject;
+
+        if (timeEntity == null)
+        {
+            timeEntity = obj.GetComponentInParent<TimeEntity>();
+            timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
+        }
+        else
+        {
+            timeEntityObject = obj;
+        }
+
+        if (timeEntity != null)
+        {
+            UpdatePath(timeEntityObject, state);
+        }
+
+        MeshRenderer[] meshRenderers = timeEntityObject.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer meshRenderer in meshRenderers)
+        {
+            GameObject meshRendererObj = meshRenderer.gameObject;
+            UpdateParticleSystem(meshRendererObj, state);
+        }
     }
 
     private void ResetVisuals(GameObject obj)
     {
+        TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+        GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
 
-        // Removes the particle system and path tracer from the object
-        ParticleSystem ps = obj.GetComponentInChildren<ParticleSystem>();
-        if (ps != null)
+        MeshRenderer[] meshRenderers = timeEntityObject.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer meshRenderer in meshRenderers)
         {
-            Debug.Log("Destroying particle system for " + obj.name);
-            Destroy(ps.gameObject);
+            GameObject meshRendererObj = meshRenderer.gameObject;
+
+            // Destroy all ParticleSystems attached to the object
+            ParticleSystem[] particleSystems = meshRendererObj.GetComponentsInChildren<ParticleSystem>();
+            foreach (ParticleSystem ps in particleSystems)
+            {
+                Destroy(ps.gameObject);
+            }
         }
-        SnapshotsPathTracer path = obj.GetComponent<SnapshotsPathTracer>();
-        if (path != null)
+
+        // Reset the path for the object with TimeEntity
+        if (timeEntity != null)
         {
-            path.RemoveSelf();
+            SnapshotsPathTracer path = timeEntityObject.GetComponent<SnapshotsPathTracer>();
+            if (path != null)
+            {
+                path.RemoveSelf();
+            }
         }
     }
 
     private void UpdatePath(GameObject obj, EntityState state)
     {
-        SnapshotsPathTracer path = obj.GetComponent<SnapshotsPathTracer>();
         TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
-        Debug.Log("Updating path for " + obj.name + ", path is null: " + (path == null) + ", time entity is null: " + (timeEntity == null));
+        GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
+        SnapshotsPathTracer path = timeEntityObject.GetComponent<SnapshotsPathTracer>();
+
         if (path == null && timeEntity != null)
         {
-            Debug.Log("Adding path tracer to " + obj.name);
-            path = obj.AddComponent<SnapshotsPathTracer>();
+            path = timeEntityObject.AddComponent<SnapshotsPathTracer>();
             path.SetUpLineRenderer(timeEntity.GetSnapshots());
         }
+        else
+        {
+            path?.SetEntitySnapshots(timeEntity.GetSnapshots());
+        }
 
-        UpdatePathColor(obj, path, state);
+        UpdatePathColor(timeEntityObject, path, state);
     }
 
     private void UpdatePathColor(GameObject obj, SnapshotsPathTracer path, EntityState state)
     {
-        Debug.Log("asdfasdf path: " + path + ", state: " + state);
         if (path != null)
         {
             switch (state)
             {
                 case EntityState.Focused:
                     path.ChangeMaterial(pathMaterialFocused);
+                    AudioManager.Instance.PlayOneShot(focusSound, 1f);
                     break;
                 case EntityState.Selected:
-                    Debug.Log("updating and setting path color to selected");
                     path.ChangeMaterial(pathMaterialSelected);
                     break;
                 case EntityState.Rewinding:
-                    Debug.Log("updating and setting path color to rewinding");
                     path.ChangeMaterial(pathMaterialRewinding);
                     break;
                 default:
                     break;
             }
         }
-        else
-        {
-            Debug.Log("Path failed to instantiate, obj: " + obj.name);
-        }
     }
-
 
     private void UpdateParticleSystem(GameObject obj, EntityState state)
     {
         ParticleSystem ps = obj.GetComponentInChildren<ParticleSystem>();
-        Debug.Log("Updating particle system color for " + obj.name + " with state " + state + " and ps: " + ps);
 
         if (ps == null)
         {
             GameObject particleSystemInstance = Instantiate(particleSystemPrefab, obj.transform);
-            // particleSystemInstance.transform.SetParent(obj.transform);
 
             ps = particleSystemInstance.GetComponent<ParticleSystem>();
             var shape = ps.shape;
@@ -307,47 +349,41 @@ public class RewindManager : MonoBehaviour
             ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
-        // must pass ps because else it will be null because it is not yet instantiated
-        UpdateParticleSystemColor(obj, ps, state);
+        UpdateAllParticleSystemsColor(obj, state);
         if (!ps.isPlaying)
         {
             ps.Play();
         }
     }
 
-    private void UpdateParticleSystemColor(GameObject obj, ParticleSystem ps, EntityState state)
+    private void UpdateAllParticleSystemsColor(GameObject obj, EntityState state)
     {
-        Debug.Log("Updating particle system color for " + obj.name + " with state " + state + " and ps: " + ps);
-        if (ps != null)
+        ParticleSystem[] particleSystems = obj.GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem ps in particleSystems)
         {
-            ParticleSystemRenderer renderer = ps.GetComponent<ParticleSystemRenderer>();
-            if (renderer != null)
+            if (ps != null)
             {
-                switch (state)
+                ParticleSystemRenderer renderer = ps.GetComponent<ParticleSystemRenderer>();
+                if (renderer != null)
                 {
-                    case EntityState.Focused:
-                        renderer.material = particleMaterialFocused;
-                        AudioManager.Instance.PlayOneShot(focusSound, 1f);
-                        break;
-                    case EntityState.Selected:
-                        Debug.Log("updating and setting particle color to selected");
-                        renderer.material = particleMaterialSelected;
-                        break;
-                    case EntityState.Rewinding:
-                        renderer.material = particleMaterialRewinding;
-                        break;
-                    default:
-                        break;
+                    switch (state)
+                    {
+                        case EntityState.Focused:
+                            renderer.material = particleMaterialFocused;
+                            AudioManager.Instance.PlayOneShot(focusSound, 1f);
+                            break;
+                        case EntityState.Selected:
+                            renderer.material = particleMaterialSelected;
+                            break;
+                        case EntityState.Rewinding:
+                            renderer.material = particleMaterialRewinding;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
-            else
-            {
-                Debug.Log("No renderer found for " + obj.name);
-            }
-        }
-        else
-        {
-            Debug.Log("No particle system found for " + obj.name);
         }
     }
 }
