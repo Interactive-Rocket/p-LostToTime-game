@@ -7956,7 +7956,7 @@ PrefabInstance:
     - target: {fileID: 5238127866512649108, guid: a27cdd6b1fee5a6aca8a984c3da72459,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5238127866512649108, guid: a27cdd6b1fee5a6aca8a984c3da72459,
         type: 3}
@@ -8240,26 +8240,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7178260226753557977}
     m_Modifications:
-    - target: {fileID: 975018774346297324, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1161232952812724543, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 1409627480023795932, guid: f6fc22162d79843db86f75a542ee264e,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 201744188}
-    - target: {fileID: 1409627480023795932, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 2524
-      objectReference: {fileID: 0}
     - target: {fileID: 1981671240396111660, guid: f6fc22162d79843db86f75a542ee264e,
         type: 3}
       propertyPath: m_Mesh
@@ -8330,11 +8315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorClosed
       objectReference: {fileID: 0}
-    - target: {fileID: 4098371212584352987, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 4583666223437920550, guid: f6fc22162d79843db86f75a542ee264e,
         type: 3}
       propertyPath: m_Mesh
@@ -8355,46 +8335,21 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1203845144}
-    - target: {fileID: 5411574551445016801, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 1382
-      objectReference: {fileID: 0}
     - target: {fileID: 5836198214589803771, guid: f6fc22162d79843db86f75a542ee264e,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 296602146}
-    - target: {fileID: 5849864789170707835, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 6903249077458906665, guid: f6fc22162d79843db86f75a542ee264e,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1326756948}
-    - target: {fileID: 6903249077458906665, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 1668
-      objectReference: {fileID: 0}
     - target: {fileID: 7281799689635911262, guid: f6fc22162d79843db86f75a542ee264e,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 296602146}
-    - target: {fileID: 7281799689635911262, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 2877
-      objectReference: {fileID: 0}
-    - target: {fileID: 9085082643658746298, guid: f6fc22162d79843db86f75a542ee264e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9890,7 +9845,7 @@ PrefabInstance:
     - target: {fileID: 5238127866512649108, guid: a27cdd6b1fee5a6aca8a984c3da72459,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5238127866512649108, guid: a27cdd6b1fee5a6aca8a984c3da72459,
         type: 3}
