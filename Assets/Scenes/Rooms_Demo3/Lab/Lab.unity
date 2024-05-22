@@ -9993,6 +9993,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 816381244247814280, guid: ed4f4d8be2aa743c9ad1441f68dab613,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 816381244247814280, guid: ed4f4d8be2aa743c9ad1441f68dab613,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -10021,6 +10026,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 51345573}
+    - target: {fileID: 3252769740465080932, guid: ed4f4d8be2aa743c9ad1441f68dab613,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5202097160930926878, guid: ed4f4d8be2aa743c9ad1441f68dab613,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10117,7 +10127,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 816381244247814280, guid: ed4f4d8be2aa743c9ad1441f68dab613, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1817428044863821598, guid: ed4f4d8be2aa743c9ad1441f68dab613,
