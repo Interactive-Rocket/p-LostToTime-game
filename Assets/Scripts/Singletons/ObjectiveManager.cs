@@ -6,8 +6,9 @@ using UnityEngine;
 public class ObjectiveManager : MonoBehaviour
 {
     public static ObjectiveManager Instance { get; private set; }
-    
-    [SerializeField] private string[] m_objectives =
+
+    [SerializeField]
+    private string[] m_objectives =
     {
         "Scape from the lab",
         "Cross the chasm",
@@ -17,6 +18,9 @@ public class ObjectiveManager : MonoBehaviour
     [Header("Level Objective")]
     [Tooltip("Set the objective depending on the Level")]
     [SerializeField] private int m_currentObjective;
+    [SerializeField] private float m_displayTime = 5.0f;
+    private const float MINIMUM_READABLE_TIME = 5.0f;
+    public float DisplayTime => m_displayTime < MINIMUM_READABLE_TIME ? MINIMUM_READABLE_TIME : m_displayTime;
     void Awake()
     {
         if (Instance == null)

@@ -2324,7 +2324,7 @@ MonoBehaviour:
   - Cross the chasm
   - Jump the fence
   - Rescue your Daughter
-  m_currentObjective: 0
+  m_currentObjective: 3
 --- !u!43 &1343529956
 Mesh:
   m_ObjectHideFlags: 0
