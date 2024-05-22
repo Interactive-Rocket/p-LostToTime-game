@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(InputManager))]
 public class PlayerDeselect : MonoBehaviour 
 {
-    public float InteractionRange = 10f;
-    private IInteractable focusedInteractable = null;
     private InputManager _input;
 
     void Awake()
@@ -14,7 +12,6 @@ public class PlayerDeselect : MonoBehaviour
 
     private void Update()
     {
-
         if (_input.IsDeselecting())
         {
             DeselectAll();
