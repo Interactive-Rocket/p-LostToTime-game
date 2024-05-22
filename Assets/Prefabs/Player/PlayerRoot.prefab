@@ -914,6 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionRange: 2
   interactSound: {fileID: 8300000, guid: 9217325a12dbc43429c900cecb06b7fa, type: 3}
+  interactFailedSound: {fileID: 8300000, guid: 9217325a12dbc43429c900cecb06b7fa, type: 3}
 --- !u!114 &193984657107912417
 MonoBehaviour:
   m_ObjectHideFlags: 0

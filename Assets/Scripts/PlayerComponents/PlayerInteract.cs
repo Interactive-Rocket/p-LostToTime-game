@@ -1,16 +1,5 @@
 using UnityEngine;
 
-public interface IInteractable
-{
-    public void Interact();
-}
-
-public interface IHoverable
-{
-    public void Hover();
-    public void Unhover();
-}
-
 [RequireComponent(typeof(InputManager))]
 public class PlayerInteract : MonoBehaviour
 {
@@ -19,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     private IHoverable focusedHoverable = null;
     private InputManager _input;
     public AudioClip interactSound;
+    public AudioClip interactFailedSound;
 
     void Awake()
     {
@@ -52,7 +42,11 @@ public class PlayerInteract : MonoBehaviour
         if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IInteractable tempInteractable))
         {
             focusedInteractable = tempInteractable;
-            if (HUDManager.Instance != null) HUDManager.Instance.HoveringGrabbable = true;
+            if (HUDManager.Instance != null)
+            {
+                if (focusedInteractable is IInteractableHand interactableHand) HUDManager.Instance.HoveringGrabbable = interactableHand.ShowInteractableHand();
+                else HUDManager.Instance.HoveringGrabbable = true;
+            }
         }
         else
         {
@@ -82,8 +76,46 @@ public class PlayerInteract : MonoBehaviour
         if (focusedInteractable != null)
         {
             focusedInteractable.Interact();
-            // additional things could be added here, such as interact audio
-            AudioManager.Instance.PlayOneShot(interactSound);
+
+            if (focusedInteractable is not IInteractableSound && AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(interactSound);
         }
+        else if (AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(interactFailedSound);
     }
+}
+
+/* Base interactable interface
+ * 
+*/
+public interface IInteractable
+{
+    public void Interact();
+}
+
+/* Hoverable interface
+ * Sends pulses on hover and unhover.
+ * Doesn't do much else, needs to be called separately because it only
+ * calls these functions when hovering and unhovering. 
+*/
+public interface IHoverable
+{
+    public void Hover();
+    public void Unhover();
+}
+
+/* Interactable Sound Interface
+ * If we wish to play a sound different from the default interact sound,
+ * extend implement this interface directly on the script of the IInteractable.
+*/
+public interface IInteractableSound
+{
+    public void PlaySound();
+}
+
+/* Interactable Hand Interface
+ * If the Interactable should show the animated hand or not, really only useful for
+ * Interactables which can't really be used (like locked doors).
+*/
+public interface IInteractableHand
+{
+    public bool ShowInteractableHand();
 }
