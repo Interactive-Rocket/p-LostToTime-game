@@ -58,6 +58,8 @@ public class MapScreenController : MonoBehaviour
         */
         DisableInteractableHotspots(screenIndex);
         UpdateMeshScreenMaterial(m_currentScreen);
+        //TODO ------- Invoke Objective prompt
+        if(HUDManager.Instance != null && m_currentScreen == 2) HUDManager.Instance.ObjectivePrompt = true;
     }
 
     public void GoBackScreen()

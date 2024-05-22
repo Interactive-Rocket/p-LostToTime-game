@@ -67,7 +67,17 @@ public class HUDManager : MonoBehaviour
             else onNotDisplayTooltip.Invoke();
         }
     }
-
+    //TODO ------- create an accessor for calling the Objective Prompt
+    private bool objectivePromptActive = false; //? I propose use objectivePromptState instead
+    public bool ObjectivePrompt
+    {
+        get => objectivePromptActive;
+        set
+        {
+            if (value && ObjectiveManager.Instance != null) Debug.Log("HUD -> NEW Objective:" + ObjectiveManager.Instance.GetObjective());
+            objectivePromptActive = value;
+        }
+    }
     void Awake()
     {
         // Ensure it's a singleton
