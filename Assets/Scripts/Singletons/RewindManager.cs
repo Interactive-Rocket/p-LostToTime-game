@@ -91,7 +91,7 @@ public class RewindManager : MonoBehaviour
                     UpdateVisuals(timeEntityObject, EntityState.Focused);
                     if (!focusSoundPlayed)
                     {
-                        AudioManager.Instance.PlayOneShot(focusSound, 1f);
+                        AudioManager.Instance.PlayOneShot(focusSound, 0.25f);
                         focusSoundPlayed = true;
                     }
                 }
@@ -143,7 +143,7 @@ public class RewindManager : MonoBehaviour
         {
             selectedObjects.Add(timeEntityObject);
             UpdateVisuals(timeEntityObject, EntityState.Selected);
-            AudioManager.Instance.PlayOneShot(select, 1f);
+            AudioManager.Instance.PlayOneShot(select, 0.5f);
         }
     }
 
@@ -165,7 +165,7 @@ public class RewindManager : MonoBehaviour
             }
             selectedObjects.RemoveAt(i);
         }
-        AudioManager.Instance.PlayOneShot(deselect, 1f);
+        AudioManager.Instance.PlayOneShot(deselect, 0.5f);
     }
 
     public void DeselectObject(GameObject obj)
@@ -187,7 +187,7 @@ public class RewindManager : MonoBehaviour
         }
         else if (isRewinding && !rewind && selectedObjects.Count > 0)
         {
-            AudioManager.Instance.PlayOneShot(rewindEndSound, 1f);
+            AudioManager.Instance.PlayOneShot(rewindEndSound, 0.5f);
         }
 
         isRewinding = rewind;

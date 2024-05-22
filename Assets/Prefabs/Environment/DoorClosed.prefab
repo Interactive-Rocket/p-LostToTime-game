@@ -854,10 +854,10 @@ MonoBehaviour:
   onInteracted:
     m_PersistentCalls:
       m_Calls: []
-  handVisible: 0
+  handVisible: 1
   useAudioManager: 1
   interactSound:
-  - {fileID: 8300000, guid: a40c3b6ce24300f4fa160c8e2d954b7f, type: 3}
+  - {fileID: 8300000, guid: 33c448f6738ad4e4d8d97b2d962bff44, type: 3}
   interactVolume: 0.5
 --- !u!65 &1471298043321552036
 BoxCollider:

@@ -913,10 +913,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionRange: 2
-  interactSound: {fileID: 8300000, guid: 9217325a12dbc43429c900cecb06b7fa, type: 3}
-  interactGrabbedSound: {fileID: 8300000, guid: 230b4f626936f5c4880c46ff9d2b6b9b,
+  interactSound: {fileID: 8300000, guid: 8d99e1d1b25799d40a0480a7fd833806, type: 3}
+  interactGrabbedSound: {fileID: 8300000, guid: 9217325a12dbc43429c900cecb06b7fa,
     type: 3}
-  interactFailedSound: {fileID: 8300000, guid: 9217325a12dbc43429c900cecb06b7fa, type: 3}
+  interactFailedSound: {fileID: 8300000, guid: 8d99e1d1b25799d40a0480a7fd833806, type: 3}
 --- !u!114 &193984657107912417
 MonoBehaviour:
   m_ObjectHideFlags: 0

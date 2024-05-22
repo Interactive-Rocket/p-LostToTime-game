@@ -423,7 +423,8 @@ MonoBehaviour:
   defaultColour: {r: 0, g: 0, b: 0, a: 0}
   activatedColour: {r: 0, g: 0, b: 0, a: 0}
   pressSound: {fileID: 8300000, guid: 7407a88b98ee15276865d6090807794f, type: 3}
-  failedSound: {fileID: 8300000, guid: a40c3b6ce24300f4fa160c8e2d954b7f, type: 3}
+  failedSound: {fileID: 8300000, guid: f7d0cbfe8db7274418a9825ea39bea89, type: 3}
+  failedInteractVolume: 0.5
   releaseSound: {fileID: 0}
 --- !u!114 &1457475981314390021
 MonoBehaviour:
