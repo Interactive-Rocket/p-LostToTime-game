@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     private IHoverable focusedHoverable = null;
     private InputManager _input;
     public AudioClip interactSound;
+    public AudioClip interactGrabbedSound;
     public AudioClip interactFailedSound;
 
     void Awake()
@@ -77,7 +78,10 @@ public class PlayerInteract : MonoBehaviour
         {
             focusedInteractable.Interact();
 
-            if (focusedInteractable is not IInteractableSound && AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(interactSound);
+            if (focusedInteractable is not IInteractableSound && AudioManager.Instance != null) {
+                if (focusedInteractable is GrabbedController) AudioManager.Instance.PlayOneShot(interactGrabbedSound);
+                else AudioManager.Instance.PlayOneShot(interactSound);
+            }
         }
         else if (AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(interactFailedSound);
     }
