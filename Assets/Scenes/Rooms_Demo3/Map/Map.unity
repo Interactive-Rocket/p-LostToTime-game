@@ -2319,7 +2319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da0a59fd08c7419c8d2a18cfbfa571c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentObjective: 3
+  m_objectives:
+  - Scape from the lab
+  - Cross the chasm
+  - Jump the fence
+  - Rescue your Daughter
+  m_currentObjective: 0
 --- !u!43 &1343529956
 Mesh:
   m_ObjectHideFlags: 0

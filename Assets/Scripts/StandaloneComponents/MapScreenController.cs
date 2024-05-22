@@ -19,7 +19,7 @@ public class MapScreenController : MonoBehaviour
     {
         GetGameObjectScreenMaterial();
         m_interactables = GetComponentsInChildren<MapInteractable>();
-        Debug.Log(m_interactables.Length);
+        //Debug.Log(m_interactables.Length);
         DisableInteractableHotspots(0);
 
     }
@@ -52,10 +52,6 @@ public class MapScreenController : MonoBehaviour
     public void SetScreen(int screenIndex)
     {
         m_currentScreen = screenIndex >= m_screenMaterials.Length ? m_currentScreen : m_currentScreen = screenIndex;
-        /*
-            Currently, the player could potentially go directly to the daugther screen 
-            without selecting the subject details.
-        */
         DisableInteractableHotspots(screenIndex);
         UpdateMeshScreenMaterial(m_currentScreen);
         //TODO ------- Invoke Objective prompt
