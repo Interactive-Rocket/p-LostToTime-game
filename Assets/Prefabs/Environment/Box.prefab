@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5286832111859305607}
   - component: {fileID: 5689459986719778168}
   - component: {fileID: 4567235665987522569}
+  - component: {fileID: 7095657880518938537}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 490515599029648435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.258995, y: 20.078903, z: -5.994581}
+  m_LocalPosition: {x: 26.511246, y: 21.085413, z: -4.7526765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66,7 +67,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 1
+    m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 040000000500000006000000050000000700000006000000
@@ -83,7 +84,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 1
+    m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 08000000090000000a000000090000000b0000000a000000
@@ -100,7 +101,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 1
+    m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 0c0000000d0000000e0000000d0000000f0000000e000000
@@ -117,7 +118,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 1
+    m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 100000001100000012000000110000001300000012000000
@@ -134,7 +135,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 1
+    m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 140000001500000016000000150000001700000016000000
@@ -151,7 +152,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 1
+    m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
   m_SharedVertices:
@@ -190,30 +191,30 @@ MonoBehaviour:
   - {x: 0, y: -0.125, z: 1.25}
   - {x: 1.25, y: -0.125, z: 1.25}
   m_Textures0:
-  - {x: 1.0002766, y: 0.3359375}
-  - {x: 0.6721515, y: 0.3359375}
-  - {x: 1.0002766, y: 0.6640625}
-  - {x: 0.6721515, y: 0.6640625}
-  - {x: 0.6640625, y: 0.33285302}
-  - {x: 0.3359375, y: 0.33285302}
-  - {x: 0.6640625, y: 0.660978}
-  - {x: 0.3359375, y: 0.660978}
-  - {x: 0.3309331, y: 0.3359375}
-  - {x: 0.002808094, y: 0.3359375}
-  - {x: 0.3309331, y: 0.6640625}
-  - {x: 0.002808094, y: 0.6640625}
-  - {x: 0.6640625, y: 0.005892575}
-  - {x: 0.3359375, y: 0.005892575}
-  - {x: 0.6640625, y: 0.33401757}
-  - {x: 0.3359375, y: 0.33401757}
-  - {x: 0.3359375, y: 0.98793834}
-  - {x: 0.6640625, y: 0.98793834}
-  - {x: 0.3359375, y: 0.65981334}
-  - {x: 0.6640625, y: 0.65981334}
-  - {x: 0.6640625, y: 0.3359375}
-  - {x: 0.3359375, y: 0.3359375}
-  - {x: 0.6640625, y: 0.6640625}
-  - {x: 0.3359375, y: 0.6640625}
+  - {x: 0, y: -0.125}
+  - {x: -1.25, y: -0.125}
+  - {x: 0, y: 1.125}
+  - {x: -1.25, y: 1.125}
+  - {x: 1.25, y: -0.125}
+  - {x: 0, y: -0.125}
+  - {x: 1.25, y: 1.125}
+  - {x: 0, y: 1.125}
+  - {x: 1.25, y: -0.125}
+  - {x: 0, y: -0.125}
+  - {x: 1.25, y: 1.125}
+  - {x: 0, y: 1.125}
+  - {x: 0, y: -0.125}
+  - {x: -1.25, y: -0.125}
+  - {x: 0, y: 1.125}
+  - {x: -1.25, y: 1.125}
+  - {x: 0, y: 1.25}
+  - {x: 1.25, y: 1.25}
+  - {x: 0, y: 0}
+  - {x: 1.25, y: 0}
+  - {x: 0, y: 0}
+  - {x: -1.25, y: 0}
+  - {x: 0, y: 1.25}
+  - {x: -1.25, y: 1.25}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1591
+  m_VersionIndex: 2549
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 1488
+  m_UnmodifiedMeshVersion: 2549
   m_ShapeBox:
     m_Center: {x: 0.625, y: 0.5, z: 0.625}
     m_Extent: {x: 0.625, y: 0.625, z: 0.625}
@@ -393,4 +394,21 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.25, y: 1.25, z: 1.25}
-  m_Center: {x: 0.625, y: 0.5, z: 0.625}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7095657880518938537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490515599029648435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f9467b83a61a047aa7eb0f2dfe5832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 60
+  currentTimePattern: 1
+  _isStopped: 0
+  _timeScale: 1
+  localTime: 0

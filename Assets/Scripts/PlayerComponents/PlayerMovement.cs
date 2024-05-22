@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
 	private Vector3 _positionRelativeToPlatform;
 	private Vector3 _platformVelocity;
 	private Vector3 _previousPlatformVelocity;
+	private bool _landSoundPlayed = false;
 
 	private void Awake()
 	{
@@ -166,11 +167,21 @@ public class PlayerMovement : MonoBehaviour
 				_verticalVelocity = -2f;
 			}
 
+			// Ensure the landing sound is played once when grounded again
+			if (!_landSoundPlayed)
+			{
+				_playerSound.PlayLandSound();
+				_landSoundPlayed = true;
+			}
+
 			// Jump
 			if (_input.IsJumpping() && _jumpTimeoutDelta <= 0.0f)
 			{
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+				_jumpTimeoutDelta = JumpTimeout;
+				_playerSound.PlayJumpSound();
+				// _landSoundPlayed = false; // Remove this line
 			}
 
 			// jump timeout
@@ -192,12 +203,20 @@ public class PlayerMovement : MonoBehaviour
 
 			// if we are not grounded, do not jump
 			_input.SetJump(false);
+
+			// _landSoundPlayed = false; // Remove this line
 		}
 
 		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 		if (_verticalVelocity < _terminalVelocity)
 		{
 			_verticalVelocity += Gravity * Time.deltaTime;
+		}
+
+		// Reset _landSoundPlayed flag when falling below 0 velocity
+		if (!Grounded && _verticalVelocity < 0.0f)
+		{
+			_landSoundPlayed = false;
 		}
 	}
 
@@ -219,4 +238,5 @@ public class PlayerMovement : MonoBehaviour
 			_positionRelativeToPlatform = Vector3.zero;
 		}
 	}
+
 }
