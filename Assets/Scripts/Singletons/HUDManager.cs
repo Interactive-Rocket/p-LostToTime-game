@@ -68,14 +68,17 @@ public class HUDManager : MonoBehaviour
         }
     }
     //TODO ------- create an accessor for calling the Objective Prompt
+    public UnityEvent OnObjectivePrompt;
     private bool objectivePromptActive = false; //? I propose use objectivePromptState instead
     public bool ObjectivePrompt
     {
         get => objectivePromptActive;
         set
         {
-            if (value && ObjectiveManager.Instance != null) Debug.Log("HUD -> NEW Objective:" + ObjectiveManager.Instance.GetObjective());
             objectivePromptActive = value;
+            if (value && ObjectiveManager.Instance != null) OnObjectivePrompt.Invoke();
+            //if (value && ObjectiveManager.Instance != null) Debug.Log("HUD -> NEW Objective:" + ObjectiveManager.Instance.GetObjective());
+            
         }
     }
     void Awake()

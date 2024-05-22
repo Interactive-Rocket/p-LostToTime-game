@@ -6,7 +6,8 @@ using UnityEngine;
 public class ObjectiveManager : MonoBehaviour
 {
     public static ObjectiveManager Instance { get; private set; }
-    private string[] m_objectives =
+    
+    [SerializeField] private string[] m_objectives =
     {
         "Scape from the lab",
         "Cross the chasm",
@@ -18,7 +19,6 @@ public class ObjectiveManager : MonoBehaviour
     [SerializeField] private int m_currentObjective;
     void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;
@@ -27,7 +27,6 @@ public class ObjectiveManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     public void SetObjective(int objectiveIndex)

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class HUDObjectivePrompt : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject ObjectivePrompt;
+    void Awake()
     {
-        
+        if (ObjectivePrompt) ObjectivePrompt.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDisplayObjective()
     {
-        
+        if (ObjectivePrompt)
+        {
+            //
+            Debug.Log("HUDObjectivePrompt -> NEW Objective:" + ObjectiveManager.Instance.GetObjective());
+            ObjectivePrompt.SetActive(true);
+        }
     }
 }
