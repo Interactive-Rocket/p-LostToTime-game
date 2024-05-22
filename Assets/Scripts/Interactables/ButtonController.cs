@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ButtonController : MonoBehaviour, IInteractable
+[RequireComponent(typeof(SoundController))]
+[RequireComponent(typeof(TimeEntity))]
+public class ButtonController : MonoBehaviour, IInteractable, IInteractableSound
 {
     [Tooltip("Events that happen when a button is pressed")]
     public UnityEvent onButtonPressed;
@@ -19,7 +21,10 @@ public class ButtonController : MonoBehaviour, IInteractable
     public Color defaultColour;
     public Color activatedColour;
     public AudioClip pressSound;
+    public AudioClip failedSound;
+    [SerializeField] private float failedInteractVolume = 0.5f;
     public AudioClip releaseSound;
+    private AudioClip currentAudioClip;
     private SoundController soundController;
 
     void Start()
@@ -60,7 +65,8 @@ public class ButtonController : MonoBehaviour, IInteractable
         {
             PushButton();
         }
-        else if (!isButtonPushed && wasRewinding && wasPushed) {
+        else if (!isButtonPushed && wasRewinding && wasPushed)
+        {
             UnpushButton();
             cooldownTime = 0f;
         }
@@ -73,15 +79,21 @@ public class ButtonController : MonoBehaviour, IInteractable
         //meshRenderer.material.color = isButtonPushed ? activatedColour : defaultColour;
     }
 
-    public void Interact() {
+    public void Interact()
+    {
         if (!isButtonPushed) PushButton();
+        else if (AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(failedSound, failedInteractVolume);
     }
 
     private void PushButton()
     {
         // Check that the button gets pushed when we push it and exit rewind (local or global)
         Debug.Log("Button pushed");
-        soundController.Play(pressSound);
+        // This is here in case we wish to play a different sound when the button is pushed
+        // and we have some logic to prevent it from being pushed when already pressed.
+
+        currentAudioClip = pressSound;
+        PlaySound();
         isButtonPushed = true;
         onButtonPressed.Invoke();
     }
@@ -90,8 +102,14 @@ public class ButtonController : MonoBehaviour, IInteractable
     {
         // Check that the button gets pushed when we push it and exit rewind (local or global)
         Debug.Log("Button unpushed");
-        soundController.Play(releaseSound);
+        currentAudioClip = releaseSound;
+        PlaySound();
         isButtonPushed = false;
         onButtonUnpressed.Invoke();
+    }
+
+    public void PlaySound()
+    {
+        soundController.Play(currentAudioClip);
     }
 }
