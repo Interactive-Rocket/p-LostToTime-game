@@ -19,7 +19,7 @@ public class MapScreenController : MonoBehaviour
     {
         GetGameObjectScreenMaterial();
         m_interactables = GetComponentsInChildren<MapInteractable>();
-        Debug.Log(m_interactables.Length);
+        //Debug.Log(m_interactables.Length);
         DisableInteractableHotspots(0);
 
     }
