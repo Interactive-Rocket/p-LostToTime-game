@@ -176,7 +176,16 @@ public class RewindManager : MonoBehaviour
         {
             selectedObjects.Remove(timeEntityObject);
             ResetVisuals(timeEntityObject);
+            AudioManager.Instance.PlayOneShot(deselect, 1f);
         }
+    }
+
+    public bool ObjectIsSelected(GameObject obj)
+    {
+        TimeEntity timeEntity = obj.GetComponentInParent<TimeEntity>();
+        GameObject timeEntityObject = timeEntity != null ? timeEntity.gameObject : null;
+        if (selectedObjects.Contains(timeEntityObject)) return true;
+        return false;
     }
 
     public void RewindObjects(bool rewind)
