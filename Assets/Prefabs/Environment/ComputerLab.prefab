@@ -388,6 +388,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7128247750375564613}
+        m_TargetAssemblyTypeName: NoteHoverable, Assembly-CSharp
+        m_MethodName: DisableHovering
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   pressSound:
   - {fileID: 8300000, guid: 0fbaa55cdb39bd940a294cd7c024e177, type: 3}
   - {fileID: 8300000, guid: 033559d346023834793236b183a5fcfd, type: 3}
