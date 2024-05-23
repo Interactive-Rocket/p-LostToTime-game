@@ -25,25 +25,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 5526cac27d8e29f4e8b94e1d0b36b093, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 5526cac27d8e29f4e8b94e1d0b36b093, type: 3}
+        m_Texture: {fileID: 2800000, guid: 08a5f9902fd33944a974c31baa4b28ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5526cac27d8e29f4e8b94e1d0b36b093, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Smoothness: 0.68
+    m_Floats: []
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 3.953349, g: 3.953349, b: 3.953349, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1.9904234, g: 1.9904234, b: 1.9904234, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4175034980221144946
 MonoBehaviour:
