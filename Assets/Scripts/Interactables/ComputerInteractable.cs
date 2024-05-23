@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
-public class ComputerInteractable : MonoBehaviour, IInteractable
+public class ComputerInteractable : MonoBehaviour, IInteractable, IInteractableSound
 {
     [Tooltip("Events that happen when the computer is interacted with.")]
     public UnityEvent onComputerInteracted;
@@ -25,14 +25,14 @@ public class ComputerInteractable : MonoBehaviour, IInteractable
     {
         Debug.Log("Button pushed");
         onComputerInteracted.Invoke();
-        PlayInteractSound(pressVolume);
+        PlaySound();
     }
 
-    public void PlayInteractSound(float volume = 1f)
+    public void PlaySound()
     {
         if (pressSound.Length == 0) return;
 
         int index = Random.Range(0, pressSound.Length);
-        audioSource.PlayOneShot(pressSound[index], volume);
+        audioSource.PlayOneShot(pressSound[index], pressVolume);
     }
 }

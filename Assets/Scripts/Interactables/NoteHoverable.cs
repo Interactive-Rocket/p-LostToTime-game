@@ -6,7 +6,7 @@ public class NoteHoverable : MonoBehaviour, IHoverable
 
     public void Hover()
     {
-        Debug.Log("Hovered note");
+        //Debug.Log("Hovered note");
         if (HUDManager.Instance != null)
         {
             HUDManager.Instance.displayedTooltipIndex = tooltipIndex;
@@ -16,7 +16,7 @@ public class NoteHoverable : MonoBehaviour, IHoverable
 
     public void Unhover()
     {
-        Debug.Log("Unhovered note");
+        //Debug.Log("Unhovered note");
         if (HUDManager.Instance != null) HUDManager.Instance.DisplayingTooltip = false;
     }
 }
