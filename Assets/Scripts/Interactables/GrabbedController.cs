@@ -10,11 +10,14 @@ public class GrabbedController : MonoBehaviour, IInteractable
     private Rigidbody rb;
     private float size;
     private bool initialized = false;
-    public float MagicGrabMoveSpeedNumber = 20f; //this REALLY should not be a per object (on component) variable lmaooo!!!! (if we want it tweakable in editor)
+    private float MagicGrabMoveSpeedNumber = 20f;
     private float cameraHeight = 1.375f;
     private TimeEntity tent;
+    private float oldAngularDrag = 0f;
+    private float newAngularDrag = 100f;
 
-    void Start() {
+    void Start()
+    {
         tent = GetComponent<TimeEntity>();
     }
 
@@ -22,13 +25,27 @@ public class GrabbedController : MonoBehaviour, IInteractable
     {
         if (!initialized)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject player;
+
+            if (PlayerManager.Instance != null)
+            {
+                player = PlayerManager.Instance.PlayerCapsuleGameObject;
+                MagicGrabMoveSpeedNumber = PlayerManager.Instance.MagicGrabMoveSpeedNumber;
+                newAngularDrag = PlayerManager.Instance.GrabbedObjectAngularDrag;
+            }
+
+            else player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null) return;
+
             _input = player.GetComponent<InputManager>();
             grabOffset = player.GetComponent<PlayerInteract>().InteractionRange;
             rb = GetComponent<Rigidbody>();
             Vector3 bounds = GetComponentInChildren<MeshRenderer>().bounds.extents;
             size = Mathf.Max(bounds.x, Mathf.Max(bounds.y, bounds.z)); //we wanna be able to grab big objects without them going inside us (UWU)
         }
+
+        oldAngularDrag = rb.angularDrag;
+        rb.angularDrag = newAngularDrag;
 
         grabbed = true;
         stillHasNotReleasedThaMofoButton = true;
@@ -37,6 +54,7 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     void MeFreee()
     {
+        rb.angularDrag = oldAngularDrag;
         grabbed = false;
     }
 
@@ -65,7 +83,7 @@ public class GrabbedController : MonoBehaviour, IInteractable
             {
                 stillHasNotReleasedThaMofoButton = false;
             }
-            
+
             if (grabbed)
             {
                 if (!stillHasNotReleasedThaMofoButton && _input.IsInteracting())
@@ -73,7 +91,8 @@ public class GrabbedController : MonoBehaviour, IInteractable
                     stillHasNotReleasedThaMofoButton = true;
                     MeFreee(); //you are free now! Run, box, run!
                 }
-                if (tent.IsRewinding) {
+                if (tent.IsRewinding)
+                {
                     MeFreee();
                 }
                 ApplyGrab();
