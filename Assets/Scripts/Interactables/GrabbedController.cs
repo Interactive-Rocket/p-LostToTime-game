@@ -20,16 +20,16 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     void WoweeMeGotGrabd()
     {
-        if (_input == null || grabOffset == null || rb == null)
+        if (!initialized)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             _input = player.GetComponent<InputManager>();
             grabOffset = player.GetComponent<PlayerInteract>().InteractionRange;
             rb = GetComponent<Rigidbody>();
+            Vector3 bounds = GetComponentInChildren<MeshRenderer>().bounds.extents;
+            size = Mathf.Max(bounds.x, Mathf.Max(bounds.y, bounds.z)); //we wanna be able to grab big objects without them going inside us (UWU)
         }
 
-        Vector3 bounds = GetComponent<Renderer>().bounds.extents;
-        size = Mathf.Max(bounds.x, Mathf.Max(bounds.y, bounds.z)); //we wanna be able to grab big objects without them going inside us (UWU)
         grabbed = true;
         stillHasNotReleasedThaMofoButton = true;
         initialized = true;
@@ -51,9 +51,9 @@ public class GrabbedController : MonoBehaviour, IInteractable
     void ApplyGrab()
     {
         Vector3 toPos = Camera.main.transform.position + Camera.main.transform.forward * (grabOffset + size);
-        toPos.y = Mathf.Max(toPos.y, Camera.main.transform.position.y - cameraHeight + size);
+        toPos.y = Mathf.Max(toPos.y, Camera.main.transform.position.y - cameraHeight + size); // grabbed obj cant go below us, stops propflying
         Vector3 vecToPos = toPos - rb.position;
-        rb.velocity = vecToPos * 15;
+        rb.velocity = vecToPos * MagicGrabMoveSpeedNumber;
         //rb.MovePosition(toPos);
     }
 
