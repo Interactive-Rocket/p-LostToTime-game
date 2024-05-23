@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5240295316369767959}
   m_Father: {fileID: 0}
@@ -406,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenMaterials:
   - {fileID: 2100000, guid: 42b4cf6d7da8118498e16ed7b27b7ec3, type: 2}
+  - {fileID: 2100000, guid: 66e1b486d2f4aa64f8277f57989b6837, type: 2}
   - {fileID: 2100000, guid: 0bc76e144642f1842ad41ed9f874dd6f, type: 2}
   screenIndex: 4
 --- !u!114 &7128247750375564613
