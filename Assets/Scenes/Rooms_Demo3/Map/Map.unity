@@ -5439,7 +5439,6 @@ Transform:
   - {fileID: 801787556}
   - {fileID: 1792927387}
   - {fileID: 854446926}
-  - {fileID: 1928216635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400884874
@@ -9184,50 +9183,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2008793052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1928216634
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1928216635}
-  - component: {fileID: 1928216636}
-  m_Layer: 0
-  m_Name: AnimationManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1928216635
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928216634}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54681504, y: 6.301436, z: 0.8711466}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1386857489}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1928216636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928216634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 791d7e94e2ff0498ebd349d2b68d0066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1933720782
 GameObject:
   m_ObjectHideFlags: 0
@@ -12677,6 +12632,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Transition Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3064738359324572919, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580010828198596901, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_sceneManagerSingleton
+      value: 
+      objectReference: {fileID: 801787557}
     - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
         type: 3}
       propertyPath: m_LocalPosition.x

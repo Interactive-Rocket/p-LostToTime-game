@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2869851303850882600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sceneToLoad: Scenes/MainMenu/MainMenuScene
+  m_fadingCanvas: {fileID: 8856623122739096172}
   m_transitionsAnimator: {fileID: 646536566209908692}
   m_fadeIn: {fileID: 7400000, guid: d50d659139cf94d809b7d337754ab40a, type: 2}
   m_fadOut: {fileID: 7400000, guid: 30aee15db84ec42198121e23c5988784, type: 2}
