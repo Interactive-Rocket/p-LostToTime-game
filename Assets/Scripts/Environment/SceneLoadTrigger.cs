@@ -9,7 +9,8 @@ public class SceneLoadTrigger : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if (SceneManagerSingleton.Instance != null) SceneManagerSingleton.Instance.LoadScene(sceneToLoad);
+            SceneTransitionManager.Instance.FadeOut();
+            //if (SceneManagerSingleton.Instance != null) SceneManagerSingleton.Instance.LoadScene(sceneToLoad);
         }
     }
 }
