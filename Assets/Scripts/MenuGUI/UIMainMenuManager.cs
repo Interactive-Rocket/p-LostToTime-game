@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UIMainMenuManager : UIMenuManager
-{ 
+{
     public static UIMainMenuManager Instance { get; private set; }
     [Tooltip("Path to the first level, must be specified in build settings as well.")]
     [SerializeField] private string firstLevel;
@@ -18,10 +18,10 @@ public class UIMainMenuManager : UIMenuManager
         {
             MainCanvas,
             InstructionsCanvas,
-            CreditsCanvas
+            CreditsCanvas,
         };
     }
-    
+
     protected override void AssignSelfSingleton()
     {
         if (Instance != null && Instance != this)
@@ -48,7 +48,6 @@ public class UIMainMenuManager : UIMenuManager
     {
         ChangeMenuState(CreditsCanvas);
     }
-
     public void StartGame()
     {
         if (SceneManagerSingleton.Instance != null)
@@ -60,11 +59,11 @@ public class UIMainMenuManager : UIMenuManager
 
     public void KillGame()
     {
-        #if UNITY_STANDALONE
+#if UNITY_STANDALONE
             Application.Quit();
-        #endif
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
