@@ -248,4 +248,4 @@ MonoBehaviour:
   m_fadingCanvas: {fileID: 8856623122739096172}
   m_transitionsAnimator: {fileID: 646536566209908692}
   m_fadeIn: {fileID: 7400000, guid: d50d659139cf94d809b7d337754ab40a, type: 2}
-  m_fadOut: {fileID: 7400000, guid: 30aee15db84ec42198121e23c5988784, type: 2}
+  m_fadeOut: {fileID: 7400000, guid: 30aee15db84ec42198121e23c5988784, type: 2}

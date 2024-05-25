@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 199300175329370877, guid: ff35fc0d8016d2f43a79db18bacd8f0e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.19
+      value: 20.51
       objectReference: {fileID: 0}
     - target: {fileID: 199300175329370877, guid: ff35fc0d8016d2f43a79db18bacd8f0e,
         type: 3}
@@ -2450,6 +2450,74 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &505877862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 566037958}
+    m_Modifications:
+    - target: {fileID: 3064738359324572919, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene Transition Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8666a8175be24187b388ad857dc0bb8, type: 3}
 --- !u!1 &516885769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,8 +2597,15 @@ Transform:
   - {fileID: 516885770}
   - {fileID: 1687458149}
   - {fileID: 373883312}
+  - {fileID: 641347019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &641347019 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7494388615710585846, guid: e8666a8175be24187b388ad857dc0bb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 505877862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &659047090
 Mesh:
   m_ObjectHideFlags: 0
@@ -6666,6 +6741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37177407df55d3a45ab60e4bf2ba6155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCapsuleGameObject: {fileID: 0}
   playerPrefab: {fileID: 1505116169090373434, guid: ce27219ae81e2f745a40fdc1dd6ef4a6,
     type: 3}
   HUDPrefab: {fileID: 1692916813957765883, guid: 5d966ed67409f05409fa0c6f315671f6,
@@ -6677,6 +6753,8 @@ MonoBehaviour:
   controlEnabled: 1
   volume: 1
   sensitivity: 1
+  MagicGrabMoveSpeedNumber: 20
+  GrabbedObjectAngularDrag: 100
 --- !u!1 &1505173458
 GameObject:
   m_ObjectHideFlags: 0
