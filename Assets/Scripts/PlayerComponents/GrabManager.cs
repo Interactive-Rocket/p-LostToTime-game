@@ -10,13 +10,15 @@ public class GrabManager : MonoBehaviour
     private Rigidbody grabbed = null;
     private float grabOffset;
     private bool isGrabbing = false; // Added to control grab toggle
+    private int layerMask = ~(1 << 6);
 
     void Update()
     {
+        print(LayerMask.NameToLayer("Invisible Wall"));
         // Lazy add, should be broken off into a separate method we can call
         Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, GrabRange))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, GrabRange,layerMask))
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out Rigidbody _))
             {
@@ -58,7 +60,7 @@ public class GrabManager : MonoBehaviour
         {
             Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
             Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, GrabRange))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, GrabRange,layerMask))
             {
                 if (hitInfo.collider.gameObject.TryGetComponent(out Rigidbody rb))
                 {

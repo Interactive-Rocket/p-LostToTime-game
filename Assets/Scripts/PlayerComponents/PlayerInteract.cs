@@ -12,6 +12,7 @@ public class PlayerInteract : MonoBehaviour
     public AudioClip interactGrabbedSound;
     public AudioClip interactFailedSound;
 	public UnityAction interactActions;
+    private int layerMask = ~(1 << 6);
 
     void Awake()
     {
@@ -43,7 +44,7 @@ public class PlayerInteract : MonoBehaviour
     {
         Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        bool interactableInRange = Physics.Raycast(ray, out RaycastHit hitInfo, InteractionRange);
+        bool interactableInRange = Physics.Raycast(ray, out RaycastHit hitInfo, InteractionRange,layerMask);
 
         // Interactable interface
         if (interactableInRange && hitInfo.collider.gameObject.TryGetComponent(out IInteractable tempInteractable))

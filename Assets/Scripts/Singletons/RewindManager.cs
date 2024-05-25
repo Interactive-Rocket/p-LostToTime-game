@@ -25,6 +25,7 @@ public class RewindManager : MonoBehaviour
     public AudioClip focusSound;
     public AudioClip rewindSound;
     public AudioClip rewindEndSound;
+    private int layerMask = ~(1 << 6);
 
     private enum EntityState
     {
@@ -59,7 +60,7 @@ public class RewindManager : MonoBehaviour
         Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit,float.MaxValue,layerMask))
         {
             GameObject hitObject = hit.collider.gameObject;
 

@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
 	*/
 	private InputManager _input;
 	private GameObject _mainCamera;
+    private int layerMask = ~(1 << 6);
 
 	private void Awake()
 	{
@@ -60,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
 			Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0); //The ray is shoot from the center of the screen
 			_rayTimeEntitySelector = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-			if (Physics.Raycast(_rayTimeEntitySelector, out RaycastHit hit))
+			if (Physics.Raycast(_rayTimeEntitySelector, out RaycastHit hit,float.MaxValue,layerMask))
 			{
 				GameObject hitObject = hit.collider.gameObject;
 				Debug.Log(hitObject.name);
