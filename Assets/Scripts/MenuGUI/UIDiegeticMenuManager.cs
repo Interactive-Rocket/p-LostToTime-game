@@ -2,15 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMainMenuManager : UIMenuManager
+public class UIDiegeticMenuManager : UIMenuManager
 {
-    public static UIMainMenuManager Instance { get; private set; }
-    [Tooltip("Path to the first level, must be specified in build settings as well.")]
-    [SerializeField] private string firstLevel;
+    public static UIDiegeticMenuManager Instance { get; private set; }
+     [Header("The firts level to start a new game")]
+    [Tooltip("Path to all levels must be specified in build settings as well.")]
+    [SerializeField] private string m_firstLevel;
+    [Header("Levels to Load")]
+    [SerializeField] private string m_firstLevelX;
+    [SerializeField] private string m_SecondLevel;
+    [SerializeField] private string m_thirdLevel;
+    [SerializeField] private string m_FourthLevel;
+    
     [Header("Canvases")]
+    [SerializeField] private GameObject NevigationCanvas;
     [SerializeField] private GameObject MainCanvas;
     [SerializeField] private GameObject InstructionsCanvas;
     [SerializeField] private GameObject CreditsCanvas;
+    [SerializeField] private GameObject LoadLevelCanvas;
 
     override protected void SetMenuStates()
     {
@@ -19,6 +28,7 @@ public class UIMainMenuManager : UIMenuManager
             MainCanvas,
             InstructionsCanvas,
             CreditsCanvas,
+            LoadLevelCanvas
         };
     }
 
@@ -48,12 +58,16 @@ public class UIMainMenuManager : UIMenuManager
     {
         ChangeMenuState(CreditsCanvas);
     }
+    public void SetLoadLevelCanvasActive()
+    {
+        ChangeMenuState(LoadLevelCanvas);
+    }
     public void StartGame()
     {
         if (SceneManagerSingleton.Instance != null)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            SceneManagerSingleton.Instance.LoadScene(firstLevel);
+            SceneManagerSingleton.Instance.LoadScene(m_firstLevel);
         }
     }
 
