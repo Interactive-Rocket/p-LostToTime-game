@@ -28,14 +28,15 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        colliderOffset = new Vector3(0, offset, 0);
         UpdateColliderCenter();
-        _position = transform.position;
-        _pos_diff = _position - _previous_pos;
-        _angle_change = transform.rotation.eulerAngles - _previous_rotation.eulerAngles;
-        UpdatePosition();
+        //UpdatePosition();
     }
 
     public void UpdatePosition(){
+        _position = transform.position;
+        _pos_diff = _position - _previous_pos;
+        _angle_change = transform.rotation.eulerAngles - _previous_rotation.eulerAngles;
         _previous_rotation = transform.rotation;
         _previous_pos = transform.position;
         _last_time = Time.time;
@@ -49,9 +50,16 @@ public class MovingPlatform : MonoBehaviour
 
     void OnTriggerExit(Collider other){
         if (other.gameObject.CompareTag("Player")){
-            other.gameObject.GetComponent<PlayerMovement>().removeMovingPlatform(this);
+            //other.gameObject.GetComponent<PlayerMovement>().queueRemoveMovingPlatform(this);
 
         }
+    }
+    
+    public bool ManualColliderCheck(Collider other){
+        if (other.gameObject.CompareTag("Player") && trigger.bounds.Intersects(other.bounds)){
+            return true;
+        }
+        return false;
     }
 
     void UpdateColliderCenter() {
@@ -60,6 +68,14 @@ public class MovingPlatform : MonoBehaviour
     trigger.center = new Vector3(newColliderCenter.x/transform.localScale.x,
                                     newColliderCenter.y/transform.localScale.y,
                                     newColliderCenter.z/transform.localScale.z);
+    }
+
+    public void Disable(){
+
+    }
+
+    public void Enable(){
+
     }
 
 }
