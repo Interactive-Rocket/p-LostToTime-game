@@ -3,8 +3,7 @@ using UnityEngine.Events;
 
 public class GrabbedController : MonoBehaviour, IInteractable
 {
-    private InputManager _input;
-    private bool stillHasNotReleasedThaMofoButton;
+    private PlayerInteract _interact;
     private bool grabbed = false;
     private float grabOffset;
     private Rigidbody rb;
@@ -15,13 +14,14 @@ public class GrabbedController : MonoBehaviour, IInteractable
     private TimeEntity tent;
     private float oldAngularDrag = 0f;
     private float newAngularDrag = 100f;
+    private bool releasedThisFrame = false;
 
     void Start()
     {
         tent = GetComponent<TimeEntity>();
     }
 
-    void WoweeMeGotGrabd()
+    void Grab()
     {
         if (!initialized)
         {
@@ -37,8 +37,9 @@ public class GrabbedController : MonoBehaviour, IInteractable
             else player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
 
-            _input = player.GetComponent<InputManager>();
-            grabOffset = player.GetComponent<PlayerInteract>().InteractionRange;
+            _interact = player.GetComponent<PlayerInteract>();
+            if (_interact != null) grabOffset = _interact.InteractionRange;
+
             rb = GetComponent<Rigidbody>();
             Vector3 bounds = GetComponentInChildren<MeshRenderer>().bounds.extents;
             size = Mathf.Max(bounds.x, Mathf.Max(bounds.y, bounds.z)); //we wanna be able to grab big objects without them going inside us (UWU)
@@ -48,21 +49,23 @@ public class GrabbedController : MonoBehaviour, IInteractable
         rb.angularDrag = newAngularDrag;
 
         grabbed = true;
-        stillHasNotReleasedThaMofoButton = true;
         initialized = true;
+        if (_interact != null) _interact.interactActions += Release;
     }
 
-    void MeFreee()
+    void Release()
     {
         rb.angularDrag = oldAngularDrag;
         grabbed = false;
+        releasedThisFrame = true;
+        if (_interact != null) _interact.interactActions -= Release;
     }
 
     public void Interact()
     {
-        if (!stillHasNotReleasedThaMofoButton && !grabbed && !tent.IsRewinding)
+        if (!grabbed && !tent.IsRewinding && !releasedThisFrame)
         {
-            WoweeMeGotGrabd();
+            Grab();
         }
     }
 
@@ -77,26 +80,19 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if (initialized)
+        if (initialized && grabbed)
         {
-            if (stillHasNotReleasedThaMofoButton && !_input.IsInteracting())
+            if (tent.IsRewinding)
             {
-                stillHasNotReleasedThaMofoButton = false;
+                Release();
+                return;
             }
-
-            if (grabbed)
-            {
-                if (!stillHasNotReleasedThaMofoButton && _input.IsInteracting())
-                {
-                    stillHasNotReleasedThaMofoButton = true;
-                    MeFreee(); //you are free now! Run, box, run!
-                }
-                if (tent.IsRewinding)
-                {
-                    MeFreee();
-                }
-                ApplyGrab();
-            }
+            ApplyGrab();
         }
+    }
+
+    void LateUpdate()
+    {
+        releasedThisFrame = false;
     }
 }

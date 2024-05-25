@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(InputManager))]
 public class PlayerInteract : MonoBehaviour
@@ -10,10 +11,12 @@ public class PlayerInteract : MonoBehaviour
     public AudioClip interactSound;
     public AudioClip interactGrabbedSound;
     public AudioClip interactFailedSound;
+	public UnityAction interactActions;
 
     void Awake()
     {
         _input = GetComponent<InputManager>();
+        interactActions += SendInteract;
     }
 
     private void Update()
@@ -22,15 +25,18 @@ public class PlayerInteract : MonoBehaviour
 
         if (_input.IsInteracting())
         {
-            SendInteract();
-
-            /* This might not work if we have the interaction and grabbing be the same button
-               Keep it for now, but if this presents any issues we scrap it.
-               Ideally, if we have a component on grabbable objects we can check for that, and
-               if no such component exists we can make _input.InteractInput false.
-            */
-            _input.InteractInput(false);
+            interactActions.Invoke();
         }
+    }
+
+    private void LateUpdate()
+    {
+        /* This might not work if we have the interaction and grabbing be the same button
+           Keep it for now, but if this presents any issues we scrap it.
+           Ideally, if we have a component on grabbable objects we can check for that, and
+           if no such component exists we can make _input.InteractInput false.
+        */
+        _input.InteractInput(false);
     }
 
     private void CheckForInteractable()
@@ -78,7 +84,8 @@ public class PlayerInteract : MonoBehaviour
         {
             focusedInteractable.Interact();
 
-            if (focusedInteractable is not IInteractableSound && AudioManager.Instance != null) {
+            if (focusedInteractable is not IInteractableSound && AudioManager.Instance != null)
+            {
                 if (focusedInteractable is GrabbedController) AudioManager.Instance.PlayOneShot(interactGrabbedSound);
                 else AudioManager.Instance.PlayOneShot(interactSound);
             }

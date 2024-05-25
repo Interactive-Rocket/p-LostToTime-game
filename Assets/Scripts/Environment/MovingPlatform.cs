@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
