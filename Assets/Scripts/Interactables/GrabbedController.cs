@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -55,7 +56,8 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     void Release()
     {
-        rb.angularDrag = oldAngularDrag;
+        if (!rb.IsDestroyed())
+            rb.angularDrag = oldAngularDrag;
         grabbed = false;
         releasedThisFrame = true;
         if (_interact != null) _interact.interactActions -= Release;
