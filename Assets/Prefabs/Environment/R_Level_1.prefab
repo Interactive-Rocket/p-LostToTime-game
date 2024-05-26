@@ -3132,6 +3132,21 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 3355
       objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3210,6 +3225,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 3355
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3290,6 +3320,21 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 3355
       objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3368,6 +3413,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 3355
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3448,6 +3508,21 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 3355
       objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3526,6 +3601,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 3355
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658452056531093377, guid: a424cd34507ae476db4f10d62342aa88,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
