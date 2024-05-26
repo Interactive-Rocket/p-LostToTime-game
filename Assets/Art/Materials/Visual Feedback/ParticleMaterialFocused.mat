@@ -113,7 +113,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
-    - _Multiply: 0.27
+    - _Multiply: 0.2
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -124,9 +124,9 @@ Material:
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _Softness: 2.26
+    - _Softness: 3.61
     - _SpecularHighlights: 1
-    - _Spread: 0.51
+    - _Spread: 0.39
     - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _Surface: 1
@@ -136,7 +136,7 @@ Material:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.6392157, g: 0, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
