@@ -141,10 +141,10 @@ GameObject:
   - component: {fileID: 6700902542843521230}
   - component: {fileID: 8360616367824832007}
   - component: {fileID: 7840601648324925863}
-  - component: {fileID: 3060301958564806428}
   - component: {fileID: 1477435669849255186}
   - component: {fileID: 5525813627892283702}
   - component: {fileID: 1457475981314390021}
+  - component: {fileID: 3908941134735260951}
   m_Layer: 0
   m_Name: Hatch_and_Lift_Controller
   m_TagString: Untagged
@@ -466,28 +466,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817428044863821598}
   m_Mesh: {fileID: 0}
---- !u!64 &3060301958564806428
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817428044863821598}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &1477435669849255186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +551,27 @@ MonoBehaviour:
   timeEntity: {fileID: 0}
   audioClip: {fileID: 0}
   playbackTime: 0
+--- !u!65 &3908941134735260951
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817428044863821598}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.66, y: 0.22959225, z: 0.613997}
+  m_Center: {x: 0.21890455, y: 0.060203977, z: 0.30699766}
 --- !u!1 &5414030604989304030
 GameObject:
   m_ObjectHideFlags: 0
