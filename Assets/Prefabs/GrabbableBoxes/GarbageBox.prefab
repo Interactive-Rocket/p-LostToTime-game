@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 1382498448522859792}
   - component: {fileID: 8169860371849956618}
   - component: {fileID: 4391625799564693894}
+  - component: {fileID: -4688543586977125443}
   m_Layer: 0
   m_Name: GarbageBox
   m_TagString: Untagged
@@ -492,7 +493,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 60
-  currentTimePattern: 0
+  currentTimePattern: 1
   _isStopped: 0
   _timeScale: 1
   localTime: 0
+--- !u!114 &-4688543586977125443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144327227755641682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dffd3ee5671ff7b738c36b566a2fabab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _previous_pos: {x: 0, y: 0, z: 0}
+  _previous_rotation: {x: 0, y: 0, z: 0, w: 0}
+  _angle_change: {x: 0, y: 0, z: 0}
+  _pos_diff: {x: 0, y: 0, z: 0}
+  _position: {x: 0, y: 0, z: 0}
+  _last_time: 0
+  offset: 0.5

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8716551265941982194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 211712343697284287}
+  - component: {fileID: 277265477441563497}
+  m_Layer: 0
+  m_Name: Rewind Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &211712343697284287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8716551265941982194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277265477441563497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8716551265941982194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca8cce89e49bc64ab57efcf9d71b791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleMaterialFocused: {fileID: 2100000, guid: c096891a19b512e89b6043304c5ed279,
+    type: 2}
+  particleMaterialSelected: {fileID: 2100000, guid: 74ec4320a0177bf458cd27556786b601,
+    type: 2}
+  particleMaterialRewinding: {fileID: 2100000, guid: bb62a9e0d76c26a4b80d3dc20d6727bd,
+    type: 2}
+  pathMaterialFocused: {fileID: 2100000, guid: d083030375c86114799abce2937e62df, type: 2}
+  pathMaterialSelected: {fileID: 2100000, guid: f9d1f7e39d0888f499018739688501a0,
+    type: 2}
+  pathMaterialRewinding: {fileID: 2100000, guid: 73429df6fb0e712438b0a22c9041aae7,
+    type: 2}
+  particleSystemPrefab: {fileID: 2220595568023124009, guid: 986f62a8c2266c04da5d9221aa5a1662,
+    type: 3}
+  select: {fileID: 8300000, guid: 113f1bce0849e3a4fac596d8a38f2fcd, type: 3}
+  deselect: {fileID: 8300000, guid: c7184b33b5db6064a9ad758dff0c62fc, type: 3}
+  focusSound: {fileID: 8300000, guid: db82bd39605a85044bf28ffae73e2ad9, type: 3}
+  rewindSound: {fileID: 8300000, guid: 74ba9f0eae0e67c4fb8ecb3276c0aa2e, type: 3}
+  rewindEndSound: {fileID: 8300000, guid: 5109984105d20904fb7f1ff145c0294e, type: 3}

@@ -43,10 +43,18 @@ public class ConveyorController : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if (pushedObjects.Count > 0)
-            foreach (GameObject pushedObject in pushedObjects){
-                pushedObject.transform.Translate((reversing?-1:1) * timeEntity._timeScale * pushDirection*pushForce/100,Space.World);
+        List<GameObject> destroyedObjects = new List<GameObject>();
+        foreach (GameObject pushedObject in pushedObjects){
+            if(pushedObject.IsDestroyed()){
+                destroyedObjects.Add(pushedObject);
+                continue;
             }
+            pushedObject.transform.Translate((reversing?-1:1) * timeEntity._timeScale * pushDirection*pushForce/100,Space.World);
+        }
+        
+        foreach (GameObject destroyedObject in destroyedObjects){
+                    pushedObjects.Remove(destroyedObject);
+        }
     }
 
     private void OnCollisionEnter(Collision other){

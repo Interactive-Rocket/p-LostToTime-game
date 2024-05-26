@@ -14,7 +14,7 @@ public class MapInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Interaction with Map");
+        //Debug.Log("Interaction with Map");
         if(m_audioSource == null) return;
         m_audioSource.PlayOneShot(m_audioSource.clip,0.1f);
         OnMapInteracted.Invoke();
