@@ -8538,7 +8538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Find tus on GitHub as
+  m_text: Find us on GitHub as
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5695c4bd236d94cef9d47c0b565ebe77, type: 2}
   m_sharedMaterial: {fileID: 8597777883014157924, guid: 5695c4bd236d94cef9d47c0b565ebe77,
