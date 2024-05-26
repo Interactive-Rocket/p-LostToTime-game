@@ -424,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 2704198321694955916, guid: ff35fc0d8016d2f43a79db18bacd8f0e,
         type: 3}
       propertyPath: sceneToLoad
-      value: Scenes/MainMenu/MainMenuScene
+      value: Scenes/MainMenu/DiegeticMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7710726047766641510, guid: ff35fc0d8016d2f43a79db18bacd8f0e,
         type: 3}
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 102.4
+  m_paragraphSpacing: 151.15
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -1482,7 +1482,7 @@ Transform:
   m_GameObject: {fileID: 351935072}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.44419438, z: -0, w: 0.8959304}
-  m_LocalPosition: {x: 19.336565, y: 57.97603, z: -24.731194}
+  m_LocalPosition: {x: 19.336565, y: 54.776, z: -24.731194}
   m_LocalScale: {x: 1.2345674, y: 1.2345679, z: 1.2345674}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1671,7 +1671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &404219504
 Transform:
   m_ObjectHideFlags: 0
@@ -3033,7 +3033,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Made in Sweden
+  m_text: 'Made in Sweden
+
+    A KTH student project'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5695c4bd236d94cef9d47c0b565ebe77, type: 2}
   m_sharedMaterial: {fileID: 8597777883014157924, guid: 5695c4bd236d94cef9d47c0b565ebe77,
@@ -5751,7 +5753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.73302007, y: 12.716044}
+  m_AnchoredPosition: {x: 0.73302007, y: 17.259254}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1400884876

@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &520050851548735031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 2736820635504912895, guid: 033c6f51e7a2cf845b9d38bdd307921e,
         type: 3}
       propertyPath: m_text
-      value: Exit
+      value: '> Exit'
       objectReference: {fileID: 0}
     - target: {fileID: 6796341508363986717, guid: 033c6f51e7a2cf845b9d38bdd307921e,
         type: 3}
@@ -703,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 1375326322297696662, guid: 8170903eeee52664cbe3e180a2739d00,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2114179004157293520, guid: 8170903eeee52664cbe3e180a2739d00,
         type: 3}
@@ -713,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 3211438251442044753, guid: 8170903eeee52664cbe3e180a2739d00,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6217348267322693588, guid: 8170903eeee52664cbe3e180a2739d00,
         type: 3}
@@ -818,12 +818,12 @@ PrefabInstance:
     - target: {fileID: 7659385310121649598, guid: 8170903eeee52664cbe3e180a2739d00,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880523177422637238, guid: 8170903eeee52664cbe3e180a2739d00,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -853,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 2736820635504912895, guid: 033c6f51e7a2cf845b9d38bdd307921e,
         type: 3}
       propertyPath: m_text
-      value: Resume
+      value: '> Resume'
       objectReference: {fileID: 0}
     - target: {fileID: 6796341508363986717, guid: 033c6f51e7a2cf845b9d38bdd307921e,
         type: 3}
@@ -997,7 +997,7 @@ PrefabInstance:
     - target: {fileID: 2736820635504912895, guid: 033c6f51e7a2cf845b9d38bdd307921e,
         type: 3}
       propertyPath: m_text
-      value: Instructions & Settings
+      value: '> Controls'
       objectReference: {fileID: 0}
     - target: {fileID: 6796341508363986717, guid: 033c6f51e7a2cf845b9d38bdd307921e,
         type: 3}
