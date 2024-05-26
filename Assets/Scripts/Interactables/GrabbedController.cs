@@ -24,6 +24,11 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     void Grab()
     {
+        if (IsDirectlyBeneathPlayer())
+        {
+            return;
+        }
+
         if (!initialized)
         {
             GameObject player;
@@ -56,8 +61,7 @@ public class GrabbedController : MonoBehaviour, IInteractable
 
     void Release()
     {
-        if (!rb.IsDestroyed())
-            rb.angularDrag = oldAngularDrag;
+        if (!rb.IsDestroyed()) rb.angularDrag = oldAngularDrag;
         grabbed = false;
         releasedThisFrame = true;
         if (_interact != null) _interact.interactActions -= Release;
@@ -96,5 +100,20 @@ public class GrabbedController : MonoBehaviour, IInteractable
     void LateUpdate()
     {
         releasedThisFrame = false;
+    }
+
+    private bool IsDirectlyBeneathPlayer()
+    {
+        GameObject player = PlayerManager.Instance != null ? PlayerManager.Instance.PlayerCapsuleGameObject : GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return false;
+
+        Vector3 playerPosition = player.transform.position;
+
+        if (Physics.Raycast(playerPosition, Vector3.down, out RaycastHit hit))
+        {
+            return hit.collider.gameObject == this.gameObject;
+        }
+
+        return false;
     }
 }
