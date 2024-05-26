@@ -280,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 4490315886129320097, guid: a521da316e593431bae607d7dd04e0ae,
         type: 3}
       propertyPath: m_text
-      value: 'Metal fence
+      value: 'Metal Fence
 
 '
       objectReference: {fileID: 0}
@@ -3848,7 +3848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &609366127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5736,7 +5736,7 @@ PrefabInstance:
     - target: {fileID: 4490315886129320097, guid: a521da316e593431bae607d7dd04e0ae,
         type: 3}
       propertyPath: m_text
-      value: Conveyer Belt
+      value: Conveyor Belt
       objectReference: {fileID: 0}
     - target: {fileID: 5189435344968511265, guid: a521da316e593431bae607d7dd04e0ae,
         type: 3}
@@ -6902,6 +6902,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Subtitle
       objectReference: {fileID: 0}
+    - target: {fileID: 424683095078889134, guid: b56a9a89b039f4cbd856bea09aeb4088,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8052,12 +8057,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play as John, a scientist imprisoned in a massive, retro-futuristic, brutalist
-    underground facility. You discover that you have the power to rewind objects
-    back through time. Piecing together that your daughter is in the same facility,
-    frozen in time as a result of a failed experiment, you must learn to use your
-    time powers, locate your daughter, and escape. You do this by solving time-based
-    puzzles to advance through rooms.
+  m_text: Following the failure of one of your experiments, use your newly found
+    time-reversal powers to escape from the headquarters of your employer, keeping
+    you and your daughter imprisoned for their sinister ends.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5695c4bd236d94cef9d47c0b565ebe77, type: 2}
   m_sharedMaterial: {fileID: 8597777883014157924, guid: 5695c4bd236d94cef9d47c0b565ebe77,
@@ -8791,7 +8793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820644093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12653,7 +12655,7 @@ PrefabInstance:
     - target: {fileID: 4490315886129320097, guid: a521da316e593431bae607d7dd04e0ae,
         type: 3}
       propertyPath: m_text
-      value: Prision Lab
+      value: '"The Lab"'
       objectReference: {fileID: 0}
     - target: {fileID: 5189435344968511265, guid: a521da316e593431bae607d7dd04e0ae,
         type: 3}

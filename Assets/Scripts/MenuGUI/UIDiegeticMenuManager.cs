@@ -52,6 +52,11 @@ public class UIDiegeticMenuManager : UIMenuManager
         }
     }
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     override public void SetMainCanvasActive()
     {
         ChangeMenuState(MainCanvas);
