@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
@@ -50,6 +51,12 @@ public class PlayerMovement : MonoBehaviour
 	private CharacterController _controller;
 	private InputManager _input;
 	private PlayerSound _playerSound;
+	private MovingPlatform _movingPlatform;
+	private Vector3 _positionRelativeToPlatform;
+	private Vector3 _platformVelocity;
+	private Vector3 _previousPlatformVelocity;
+	private bool _landSoundPlayed = false;
+	private int _platformLinger = 0;
 
 	private void Awake()
 	{
@@ -69,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		JumpAndGravity();
 		GroundedCheck();
+		FollowPlatform();
 		Move();
 	}
 
@@ -77,6 +85,38 @@ public class PlayerMovement : MonoBehaviour
 		// set sphere position, with offset
 		Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+	}
+	private void FollowPlatform(){
+		_platformLinger--;
+		if(_platformLinger==0){
+			removeMovingPlatform(_movingPlatform);
+		}
+		if(_movingPlatform == null){
+			_platformVelocity = Vector3.zero;
+			return;
+		}
+
+        Vector3 angle_change = _movingPlatform._angle_change;
+        Vector3 pos_diff = _movingPlatform._pos_diff;
+		Vector3 angular_movement = Quaternion.Euler(angle_change) * _positionRelativeToPlatform - _positionRelativeToPlatform;
+		Vector3 total_diff = pos_diff + angular_movement;
+		if(_movingPlatform.gameObject.GetComponent<TimeEntity>().IsRewinding){
+			_platformVelocity = total_diff / (Time.time - _movingPlatform._last_time);
+		}
+		else
+		{
+			_platformVelocity = Vector3.zero;
+		}
+		_positionRelativeToPlatform = transform.position - _movingPlatform._position;
+		_movingPlatform.UpdatePosition();
+		if(_platformLinger>0 && _movingPlatform.ManualColliderCheck(_controller)){
+			//Debug.Log("platform regained");
+			_platformLinger = 0;
+		}
+		else if (!_movingPlatform.ManualColliderCheck(_controller)){
+			//Debug.Log("platform lost");
+			removeMovingPlatform(_movingPlatform);
+		}
 	}
 
 	private void Move()
@@ -91,13 +131,14 @@ public class PlayerMovement : MonoBehaviour
 		if (_input.GetMove() == Vector2.zero) targetSpeed = 0.0f;
 
 		// a reference to the players current horizontal velocity
-		float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
-
+		float currentHorizontalSpeed = new Vector3(_controller.velocity.x- _previousPlatformVelocity.x, 0.0f, _controller.velocity.z- _previousPlatformVelocity.z).magnitude;
+		
+		_previousPlatformVelocity = _platformVelocity;
 		float speedOffset = 0.1f;
 		float inputMagnitude = _input.GetAnalogMovement() ? _input.GetMove().magnitude : 1f;
 
 		// accelerate or decelerate to target speed
-		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
+		if (currentHorizontalSpeed < targetSpeed - speedOffset)
 		{
 			// creates curved result rather than a linear one giving a more organic speed change
 			// note T in Lerp is clamped, so we don't need to clamp our speed
@@ -106,8 +147,10 @@ public class PlayerMovement : MonoBehaviour
 			// round speed to 3 decimal places
 			_speed = Mathf.Round(_speed * 1000f) / 1000f;
 		}
-		else
+		else 
 		{
+			if (currentHorizontalSpeed > targetSpeed + speedOffset)
+				Debug.Log("capping speed");
 			_speed = targetSpeed;
 		}
 
@@ -123,9 +166,10 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		// move the player
-		_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		Vector3 finalMovement = (inputDirection.normalized * _speed + new Vector3(0, _verticalVelocity, 0) + _platformVelocity) * Time.deltaTime;
+		_controller.Move(finalMovement);
 
-		if (Grounded && inputDirection.magnitude > 0 && _speed / MoveSpeed >= 1)
+		if (Grounded && inputDirection.magnitude > 0 && currentHorizontalSpeed / MoveSpeed >= 1)
 		{
 			_playerSound.PlayFootstep(_speed / MoveSpeed);
 		}
@@ -147,11 +191,21 @@ public class PlayerMovement : MonoBehaviour
 				_verticalVelocity = -2f;
 			}
 
+			// Ensure the landing sound is played once when grounded again
+			if (!_landSoundPlayed)
+			{
+				_playerSound.PlayLandSound();
+				_landSoundPlayed = true;
+			}
+
 			// Jump
 			if (_input.IsJumpping() && _jumpTimeoutDelta <= 0.0f)
 			{
 				// the square root of H * -2 * G = how much velocity needed to reach desired height
 				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+				_jumpTimeoutDelta = JumpTimeout;
+				_playerSound.PlayJumpSound();
+				// _landSoundPlayed = false; // Remove this line
 			}
 
 			// jump timeout
@@ -173,6 +227,8 @@ public class PlayerMovement : MonoBehaviour
 
 			// if we are not grounded, do not jump
 			_input.SetJump(false);
+
+			// _landSoundPlayed = false; // Remove this line
 		}
 
 		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -180,5 +236,44 @@ public class PlayerMovement : MonoBehaviour
 		{
 			_verticalVelocity += Gravity * Time.deltaTime;
 		}
+
+		// Reset _landSoundPlayed flag when falling below 0 velocity
+		if (!Grounded && _verticalVelocity < 0.0f && _fallTimeoutDelta < 0)
+		{
+			_landSoundPlayed = false;
+		}
 	}
+
+	public void setMovingPlatform(MovingPlatform movingPlatform){
+		if (_movingPlatform == movingPlatform){
+			_platformLinger = 0;
+		}
+		else if (_movingPlatform != null && _platformLinger>0){
+			removeMovingPlatform(_movingPlatform);
+		}
+
+		if (_movingPlatform == null){
+			_movingPlatform = movingPlatform;
+			_movingPlatform.UpdatePosition();
+			_movingPlatform.UpdatePosition();
+			_positionRelativeToPlatform = transform.position - _movingPlatform._position;
+		}
+	}
+
+	
+	public void queueRemoveMovingPlatform(MovingPlatform movingPlatform){
+		if (_movingPlatform == movingPlatform){
+			_platformLinger = 4;
+		}
+	}
+	
+	public void removeMovingPlatform(MovingPlatform movingPlatform){
+		if (_movingPlatform == movingPlatform){
+			_platformLinger = 0;
+			_movingPlatform = null;
+			_platformVelocity = Vector3.zero;
+			_positionRelativeToPlatform = Vector3.zero;
+		}
+	}
+
 }

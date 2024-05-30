@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     // Reference to the player
-    public GameObject PlayerGameObject { get; private set; }
+    public GameObject PlayerRootGameObject { get; private set; }
+    public GameObject PlayerCapsuleGameObject;
 
     [Header("Spawning")]
     [Tooltip("Player prefab. Spawns the player at the spawnPoint.")]
@@ -22,6 +23,14 @@ public class PlayerManager : MonoBehaviour
     [Header("Setable fields and states")]
     public bool isAlive = true;
     public bool controlEnabled = true;
+    public float volume = 1.0f;
+    public float sensitivity = 1.0f;
+
+    [Header("Grabbed Objects Fields")]
+    [Tooltip("Please make a better name for this.")]
+    public float MagicGrabMoveSpeedNumber = 20f;
+    [Tooltip("Angular drag for grabbed objects, to resist spinning.")]
+    public float GrabbedObjectAngularDrag = 100f;
 
     void Awake()
     {
@@ -45,7 +54,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            PlayerGameObject = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            PlayerRootGameObject = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
 
         if (HUDPrefab == null)
@@ -64,6 +73,17 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Instantiate(PauseMenuPrefab);
+        }
+
+        // Load volume and sensitivity
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+            sensitivity = PlayerPrefs.GetFloat("Sensitivity");
+        }
+
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            volume = PlayerPrefs.GetFloat("Volume");
         }
     }
 

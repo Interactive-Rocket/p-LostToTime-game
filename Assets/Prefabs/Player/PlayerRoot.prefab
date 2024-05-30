@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 574433832499865003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +68,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 500
-  field of view: 90
+  field of view: 56
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 3
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -285,7 +285,7 @@ Transform:
   m_GameObject: {fileID: 1283882754878629701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 2340351755840094093}
   m_Lens:
-    FieldOfView: 90
+    FieldOfView: 56
     OrthographicSize: 10
     NearClipPlane: 0.2
     FarClipPlane: 500
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2340351755840094093}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 2340351755840094090}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 6034982305859244747}
   - component: {fileID: 6034982305859244746}
   - component: {fileID: 6034982305859244741}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,8 @@ GameObject:
   - component: {fileID: 2394504762442693712}
   - component: {fileID: 7623405112181089285}
   - component: {fileID: 5696852910367605828}
-  m_Layer: 8
+  - component: {fileID: 7553386920484276639}
+  m_Layer: 3
   m_Name: PlayerCapsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -545,7 +546,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.8, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2340351755840094093}
@@ -590,16 +591,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392ba2bf8ffee474b953c68dc6a73d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  SprintSpeed: 6
+  MoveSpeed: 3.5
+  SprintSpeed: 4.5
   SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
+  JumpHeight: 1
+  Gravity: -16
   JumpTimeout: 0.1
   FallTimeout: 0.15
-  Grounded: 1
+  Grounded: 0
   GroundedOffset: -0.14
-  GroundedRadius: 0.5
+  GroundedRadius: 0.3
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -913,6 +914,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionRange: 2
+  interactSound: {fileID: 8300000, guid: 8d99e1d1b25799d40a0480a7fd833806, type: 3}
+  interactGrabbedSound: {fileID: 8300000, guid: 9217325a12dbc43429c900cecb06b7fa,
+    type: 3}
+  interactFailedSound: {fileID: 8300000, guid: 8d99e1d1b25799d40a0480a7fd833806, type: 3}
 --- !u!114 &193984657107912417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,9 +930,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b00f58d938a094994d59dbb49670fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityStartupSound: {fileID: 8300000, guid: 2448f19641679354687b0190104ad040, type: 3}
-  abilityLoopSound: {fileID: 8300000, guid: 71268f9a8641c754cae085d2513112f1, type: 3}
-  footstep: {fileID: 8300000, guid: 35c6f08e499509742a3eca537b9cf0a8, type: 3}
+  abilityStartupSound: {fileID: 0}
+  abilityLoopSound: {fileID: 0}
+  footstep: {fileID: 8300000, guid: cbc4318d525ac19439e71bbee75b6c73, type: 3}
+  jump: {fileID: 8300000, guid: 639155644914ae9468b25fa4861e64e8, type: 3}
+  land: {fileID: 8300000, guid: cc4f64c5920234b4a8b380f3be8c97de, type: 3}
 --- !u!82 &9143477954622353737
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1034,9 +1041,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: debc3f9f40d5fab40b1f44f6299e6be3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cbc4318d525ac19439e71bbee75b6c73, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.06
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1127,7 +1134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7965885535006394065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c58e4728e53714af9837216e3bca866c, type: 3}
   m_Name: 
@@ -1159,7 +1166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d9dc165f3dd0148baedff2044e86b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionRange: 10
 --- !u!114 &5696852910367605828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,5 +1176,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9acd32daf9ea584cb06f3b57229e94c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7553386920484276639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965885535006394065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd05709c9c994974c92e7ff3c5ab944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

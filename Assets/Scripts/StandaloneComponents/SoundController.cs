@@ -8,8 +8,11 @@ public class SoundController : MonoBehaviour
 {
     [SerializeField]
     private AudioSource audioSource;
+    [SerializeField]
     private TimeEntity timeEntity;
+    [SerializeField]
     public AudioClip audioClip;
+    [SerializeField]
     public float playbackTime;
     // Start is called before the first frame update
     void Start()
@@ -52,11 +55,18 @@ public class SoundController : MonoBehaviour
     }
 
     public void Play(AudioClip clip){
+        if (timeEntity == null){
+            print("time entity missing huh");
+        }
         // Start reproduction of new sounds only if not rewinding
         if (!timeEntity.IsRewinding){
             audioSource.clip = audioClip = clip;
             playbackTime = 0;
             audioSource.Play();
         }
+    }
+
+    public void SeekTo(float partition){
+        audioSource.time = partition * audioClip.length;
     }
 }

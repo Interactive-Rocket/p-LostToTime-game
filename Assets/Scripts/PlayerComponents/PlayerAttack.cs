@@ -17,8 +17,7 @@ public class PlayerAttack : MonoBehaviour
 	*/
 	private InputManager _input;
 	private GameObject _mainCamera;
-	private PlayerSound _playerSound;
-	//private GrabManager _grabManager;
+    private int layerMask = ~(1 << 6);
 
 	private void Awake()
 	{
@@ -32,13 +31,12 @@ public class PlayerAttack : MonoBehaviour
 	private void Start()
 	{
 		_input = GetComponent<InputManager>();
-		_playerSound = GetComponent<PlayerSound>();
 
 		// reset our timeouts on start
 		_attackTimeoutDelta = AttackTimeout;
 
 	}
-	
+
 	private void Update()
 	{
 		Attacking();
@@ -49,8 +47,8 @@ public class PlayerAttack : MonoBehaviour
 		if (!_input.IsAttackingOne())
 		{
 			RewindManager.Instance.RewindObjects(false);
-		} 
-		else if (_input.IsAttackingOne()) 
+		}
+		else if (_input.IsAttackingOne())
 		{
 			_attackTimeoutDelta = AttackTimeout;
 			RewindManager.Instance.RewindObjects(true);
@@ -63,20 +61,34 @@ public class PlayerAttack : MonoBehaviour
 			Vector3 screenCenterPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0); //The ray is shoot from the center of the screen
 			_rayTimeEntitySelector = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-			if (Physics.Raycast(_rayTimeEntitySelector, out RaycastHit hit)) {
-                GameObject hitObject = hit.collider.gameObject;
+			if (Physics.Raycast(_rayTimeEntitySelector, out RaycastHit hit,float.MaxValue,layerMask))
+			{
+				GameObject hitObject = hit.collider.gameObject;
 				Debug.Log(hitObject.name);
 				TimeEntity timeEntity = hitObject.GetComponentInParent<TimeEntity>();
-                if (timeEntity != null) {
-                    // RewindManager.Instance.SelectObject(hit.collider.gameObject);
-					if (RewindManager.Instance != null) {
-						RewindManager.Instance.SelectObject(hit.collider.gameObject);
-					} else {
+				if (timeEntity != null)
+				{
+					// RewindManager.Instance.SelectObject(hit.collider.gameObject);
+					if (RewindManager.Instance != null)
+					{
+						if (RewindManager.Instance.ObjectIsSelected(hit.collider.gameObject))
+						{
+							RewindManager.Instance.DeselectObject(hit.collider.gameObject);
+						}
+						else
+						{
+							RewindManager.Instance.SelectObject(hit.collider.gameObject);
+						}
+					}
+					else
+					{
 						Debug.LogError("RewindManager.Instance is null");
 					}
 
-                }
-            }
+				}
+			}
+
+			_input.AttackTwoInput(false);
 		}
 		else
 		{
@@ -89,5 +101,4 @@ public class PlayerAttack : MonoBehaviour
 		}
 
 	}
-	private float nextLog = 0.0f;
 }

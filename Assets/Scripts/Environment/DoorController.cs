@@ -24,6 +24,7 @@ public class DoorController : MonoBehaviour
         {
             Debug.Log("No time entity found for door.");
         }
+        SetDoorAnimation(animationProgress); //make sure it starts in the right position and isnt playing the animation on repeat
     }
 
     void Start()
@@ -36,25 +37,27 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         float animationProgressTemp = animationProgress;
-    
-        if(!doorTimeEntity.IsRewinding) {
-            if(isOpen) {
-                animationProgress = Mathf.Clamp(animationProgress + Time.deltaTime * animationSpeed, 0, 1);
+
+        if (!doorTimeEntity.IsRewinding)
+        {
+            if (isOpen)
+            {
+                animationProgress = Mathf.Clamp(animationProgress + Time.deltaTime * animationSpeed, 0, 0.999999f);
             }
-            else {
-                animationProgress = Mathf.Clamp(animationProgress - Time.deltaTime * animationSpeed, 0, 1);
-                
+            else
+            {
+                animationProgress = Mathf.Clamp(animationProgress - Time.deltaTime * animationSpeed, 0, 0.999999f);
             }
         }
-        
+
         // Update the animation progress if animationProgress changes
-        if(animationProgressTemp != animationProgress || doorTimeEntity.IsRewinding)
+        if (animationProgressTemp != animationProgress || doorTimeEntity.IsRewinding)
         {
             Debug.Log("Door animation progress: " + animationProgress);
             Debug.Log("Is rewinding: " + doorTimeEntity.IsRewinding);
             SetDoorAnimation(animationProgress);
         }
-        
+
     }
 
     public void OpenDoor()
@@ -83,7 +86,7 @@ public class DoorController : MonoBehaviour
     private void SetDoorAnimation(float animationProgress)
     {
         Debug.Log($"Setting door animation progress to: {animationProgress}");
-        animator.Play("DoorOpen", 0, animationProgress);
+        animator.Play("HatchAnimation", 0, animationProgress);
         animator.speed = 0;
     }
 }

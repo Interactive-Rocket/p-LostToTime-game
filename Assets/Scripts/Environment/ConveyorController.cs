@@ -12,7 +12,9 @@ public class ConveyorController : MonoBehaviour
     public float pushForce = 5;
     Vector3 pushDirection = Vector3.back;
     public AudioClip activeSound;
+    [SerializeField]
     private SoundController soundController;
+    [SerializeField]
     private TimeEntity timeEntity;
     public bool reversing;
     // Start is called before the first frame update
@@ -20,6 +22,17 @@ public class ConveyorController : MonoBehaviour
     {
         pushedObjects = new List<GameObject>();
         soundController = GetComponent<SoundController>();
+        if (soundController == null){
+            print("missing sound controller");
+        }
+        if (activeSound == null){
+            print("missing activeSound");
+        }
+        soundController.audioClip = activeSound;
+        soundController.Play(activeSound);
+        float skiptime = UnityEngine.Random.Range(0,1f);
+        print(skiptime + " skipped");
+        soundController.SeekTo(skiptime);
         timeEntity = GetComponent<TimeEntity>();
     }
 
@@ -30,10 +43,18 @@ public class ConveyorController : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if (pushedObjects.Count > 0)
-            foreach (GameObject pushedObject in pushedObjects){
-                pushedObject.transform.Translate((reversing?-1:1) * timeEntity._timeScale * pushDirection*pushForce/100,Space.World);
+        List<GameObject> destroyedObjects = new List<GameObject>();
+        foreach (GameObject pushedObject in pushedObjects){
+            if(pushedObject.IsDestroyed()){
+                destroyedObjects.Add(pushedObject);
+                continue;
             }
+            pushedObject.transform.Translate((reversing?-1:1) * timeEntity._timeScale * pushDirection*pushForce/100,Space.World);
+        }
+        
+        foreach (GameObject destroyedObject in destroyedObjects){
+                    pushedObjects.Remove(destroyedObject);
+        }
     }
 
     private void OnCollisionEnter(Collision other){
