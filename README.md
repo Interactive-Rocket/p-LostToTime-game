@@ -51,7 +51,21 @@ The game demo has 4 levels, each one designed to help the player get a sense of 
 | Finally, level four (4) is a glimpse of what a transition level would look like, which introduces more context and reveals to the character that his daughter is alive. The large map is an example of an in-screen that explains how big the facility is and the character's new goal: rescue his daughter. | <img src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2001.jpg"> |
 
 ## Third-party assets:
+</br>
 
-- …
+**Models** 
+</br>
+- "Horror Game Prop Collection 1" (https://skfb.ly/oLHNM) by AlienKat is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+- "OutThere Sticky Note" (https://skfb.ly/otuDL) by Gavin_McAllister is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Old Computer" (https://skfb.ly/oILWQ) by SketchyBot is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+</br>
 
+**Sounds** 
+</br>
+- "Apple IIe Computer Boot and Load a ProDOS 5.25" Disk" (https://freesound.org/s/388192/) by SavageFX is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Conveyor Belt.wav" (https://freesound.org/s/584592/) by tosha73 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "JSB_Electrical hum SWITCH OFF buzz subway.aif" (https://freesound.org/s/175081/) by lugarshz is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+- "Tick Tock" (https://freesound.org/s/264498/) by FoolBoyMedia is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+
+</br>
 A game made in Sweden 🇸🇪
