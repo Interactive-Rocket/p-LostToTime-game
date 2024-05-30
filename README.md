@@ -5,9 +5,9 @@
 Players embody a scientist imprisoned in a retro-futuristic, brutalist facility. They soon discover that they have the power to rewind objects over time. Piecing together that their daughter is in the same facility, frozen in time as a result of a failed experiment, they must learn to use their time powers, locate their daughter, and escape. They do this by solving time-based puzzles to advance through rooms.
 
 ## 🕹️ Final Release v.1:
-
-| [Play "Lost To Time" on the browser at itch.io](https://davidcode.itch.io/losttotime) | <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> |
+| Link to itch.io        | Thumbnail         |
 | :---        | :---         |
+| [Play "Lost To Time" on the browser at itch.io](https://davidcode.itch.io/losttotime) | <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2006.png">|
 
 ## 🚀 Proof of Concept Releases & Testing Builds
 
@@ -15,9 +15,9 @@ To streamline & optimize our software development process, we released multiple 
 
 |Milestone  | Link to itch.io        | Thumbnail         |
 | :---        | :---         | :---         |
-| 🚩 **Basic Mechanics & Looks & feel:** Tested the core gameplay mechanics of time-rewind, validated fundamental interactions, and gathered initial user feedback. | [Lost To Time Playable Demo v1](https://davidcode.itch.io/lost-to-time-playable-demo-v1) | <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> |
-| 🚩 **Gameflow and Mechanics in Context:** Introduced fundamental environmental interactions with conveyor belts and falling objects in a gray-box prototype. | [Lost To Time Playable Demo v2](https://davidcode.itch.io/lost-to-time-playable-demo-v2)| <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> |
-| 🚩 **Level design review & PSX Looks & feel:** Implemented the game's four levels with the PSX-inspired look and feel, and gathered user feedback. | [LostToTime - Walkthrough Review](https://davidcode.itch.io/lost-to-time-playable-demo-v3)| <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> |
+| 🚩 **Basic Mechanics & Looks & feel:** Tested the core gameplay mechanics of time-rewind, validated fundamental interactions, and gathered initial user feedback. | [Lost To Time Playable Demo v1](https://davidcode.itch.io/lost-to-time-playable-demo-v1) | <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/demo1_1.png"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/demo1_2.png"> |
+| 🚩 **Gameflow and Mechanics in Context:** Introduced fundamental environmental interactions with conveyor belts and falling objects in a gray-box prototype. | [Lost To Time Playable Demo v2](https://davidcode.itch.io/lost-to-time-playable-demo-v2)| <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/demo2_1.png"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/demo2_2.png"> |
+| 🚩 **Level design review & PSX Looks & feel:** Implemented the game's four levels with the PSX-inspired look and feel, and gathered user feedback. | [LostToTime - Walkthrough Review](https://davidcode.itch.io/lost-to-time-playable-demo-v3)| <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/demo3_1.png"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/demo3_2.png"> |
 
 
 
