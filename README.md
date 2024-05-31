@@ -1,10 +1,10 @@
-# Lost To Time - Video Game
+# Lost To Time - Video Game Demo
 
 ## Game concept
 
 Players embody a scientist imprisoned in a retro-futuristic, brutalist facility. They soon discover that they have the power to rewind objects over time. Piecing together that their daughter is in the same facility, frozen in time as a result of a failed experiment, they must learn to use their time powers, locate their daughter, and escape. They do this by solving time-based puzzles to advance through rooms.
 
-## 🕹️ Final Release v.1:
+## 🕹️ Final Release - Demo v.1:
 | Link to itch.io        | Thumbnail         |
 | :---        | :---         |
 | [Play "Lost To Time" on the browser at itch.io](https://davidcode.itch.io/losttotime) | <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2006.png">|
@@ -53,19 +53,17 @@ The game demo has 4 levels, each one designed to help the player get a sense of 
 ## Third-party assets:
 </br>
 
-**Models** 
-</br>
-- "Horror Game Prop Collection 1" (https://skfb.ly/oLHNM) by AlienKat is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
-- "OutThere Sticky Note" (https://skfb.ly/otuDL) by Gavin_McAllister is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-- "Old Computer" (https://skfb.ly/oILWQ) by SketchyBot is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-</br>
+Fonts, Models & textures and Sounds
 
-**Sounds** 
-</br>
-- "Apple IIe Computer Boot and Load a ProDOS 5.25" Disk" (https://freesound.org/s/388192/) by SavageFX is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-- "Conveyor Belt.wav" (https://freesound.org/s/584592/) by tosha73 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-- "JSB_Electrical hum SWITCH OFF buzz subway.aif" (https://freesound.org/s/175081/) by lugarshz is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
-- "Tick Tock" (https://freesound.org/s/264498/) by FoolBoyMedia is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+- All in-game fonts by VileR (https://int10h.org/oldschool-pc-fonts/) Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+- "Horror Game Prop Collection 1" by AlienKat (https://skfb.ly/oLHNM) Licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
+- "OutThere Sticky Note" by Gavin_McAllister (https://skfb.ly/otuDL) Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- "Old Computer" by SketchyBot (https://skfb.ly/oILWQ) Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- “Classic64 Asset Library” Version 0.2 by Craig Snedeker (https://craigsnedeker.itch.io/classic64-asset-library) Licensed under CC0 1.0 (https://creativecommons.org/share-your-work/public-domain/cc0/)
+- "Apple IIe Computer Boot and Load a ProDOS 5.25" Disk by SavageFX (https://freesound.org/s/388192/) Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- "Conveyor Belt.wav" by tosha73 (https://freesound.org/s/584592/) Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- "JSB_Electrical hum SWITCH OFF buzz subway.aif" by lugarshz (https://freesound.org/s/175081/) Licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
+- "Tick Tock" by FoolBoyMedia (https://freesound.org/s/264498/) Licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
 
 </br>
 A game made in Sweden 🇸🇪
