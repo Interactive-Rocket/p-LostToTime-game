@@ -4,7 +4,7 @@
 
 Players embody a scientist imprisoned in a retro-futuristic, brutalist facility. They soon discover that they have the power to rewind objects over time. Piecing together that their daughter is in the same facility, frozen in time as a result of a failed experiment, they must learn to use their time powers, locate their daughter, and escape. They do this by solving time-based puzzles to advance through rooms.
 
-## 🕹️ Final Release - Demo v.1:
+## 🕹️ Release - Final Demo:
 | Link to itch.io        | Thumbnail         |
 | :---        | :---         |
 | [Play "Lost To Time" on the browser at itch.io](https://davidcode.itch.io/losttotime) | <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2005.jpg"> <img width="40%" src="https://github.com/Interactive-Rocket/p-LostToTime-game/blob/documentation/Assets/Art/Images/gameplay%2006.png">|
