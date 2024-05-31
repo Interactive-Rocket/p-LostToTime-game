@@ -3848,7 +3848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &609366127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3857,7 +3857,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609366126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.999739}
+  m_LocalPosition: {x: 0, y: 0, z: -7.9995384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3865,8 +3865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1665.0037, y: -314.00006}
-  m_SizeDelta: {x: 480, y: 146.3733}
+  m_AnchoredPosition: {x: 1631.1604, y: -201.768}
+  m_SizeDelta: {x: 584.05, y: 146.3733}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &609366128
 MonoBehaviour:
@@ -3888,19 +3888,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ErzaDuNord
-
-    Haval0
-
-    Noon-io
-
-    Sasoder
-
-    DavidGiraldoCode'
+  m_text: "- All in-game fonts by VileR (https://int10h.org/oldschool-pc-fonts/)
+    Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)\n\n-
+    \"Horror Game Prop Collection 1\" by AlienKat (https://skfb.ly/oLHNM) Licensed
+    under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)\n\n- \"OutThere
+    Sticky Note\" by Gavin_McAllister (https://skfb.ly/otuDL) Licensed under CC BY
+    4.0 (https://creativecommons.org/licenses/by/4.0/)\n\n- \"Old Computer\" by SketchyBot
+    (https://skfb.ly/oILWQ) Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)\n\n-
+    \u201CClassic64 Asset Library\u201D Version 0.2 by Craig Snedeker (https://craigsnedeker.itch.io/classic64-asset-library)
+    Licensed under CC0 1.0 (https://creativecommons.org/share-your-work/public-domain/cc0/)\n\n-
+    \"Apple IIe Computer Boot and Load a ProDOS 5.25\" Disk by SavageFX (https://freesound.org/s/388192/)
+    Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)\n\n-
+    \"Conveyor Belt.wav\" by tosha73 (https://freesound.org/s/584592/) Licensed under
+    CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)\n\n- \"JSB_Electrical
+    hum SWITCH OFF buzz subway.aif\" by lugarshz (https://freesound.org/s/175081/)
+    Licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)\n\n-
+    \"Tick Tock\" by FoolBoyMedia (https://freesound.org/s/264498/) Licensed under
+    CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5695c4bd236d94cef9d47c0b565ebe77, type: 2}
-  m_sharedMaterial: {fileID: 8597777883014157924, guid: 5695c4bd236d94cef9d47c0b565ebe77,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3924,8 +3931,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3960,7 +3967,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 34.253235, y: 0, z: 0, w: -600.4393}
+  m_margin: {x: 23.898159, y: 0, z: -14.455139, w: -600.4393}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6058,7 +6065,7 @@ PrefabInstance:
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.999949
+      value: -7.9990325
       objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
@@ -6083,7 +6090,7 @@ PrefabInstance:
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1186.2764
+      value: 1031.7311
       objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
@@ -6905,7 +6912,7 @@ PrefabInstance:
     - target: {fileID: 424683095078889134, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
@@ -6960,7 +6967,7 @@ PrefabInstance:
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: -7.9997993
       objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
@@ -6985,12 +6992,12 @@ PrefabInstance:
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1694
+      value: 1660.1566
       objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -205.00006
+      value: -92.768005
       objectReference: {fileID: 0}
     - target: {fileID: 2094622558019203939, guid: b56a9a89b039f4cbd856bea09aeb4088,
         type: 3}
@@ -8123,7 +8130,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 34.253235, y: 0, z: -477.54388, w: -479.73657}
+  m_margin: {x: 34.253235, y: 0, z: -358.38684, w: -479.73657}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10830,7 +10837,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4130483184818206416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.999895}
+  m_LocalPosition: {x: 0, y: 0, z: -7.999033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10838,7 +10845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1163.2764, y: -288.177}
+  m_AnchoredPosition: {x: 1008.731, y: -288.177}
   m_SizeDelta: {x: 538, y: 146.3733}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1364946358030561159
@@ -11097,7 +11104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1841109462883155217
 GameObject:
   m_ObjectHideFlags: 0
